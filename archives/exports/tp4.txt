@@ -1,0 +1,1668 @@
+db/index.js:1:import Database from 'better-sqlite3';
+db/index.js:2:import { readFileSync } from 'node:fs';
+db/index.js:3:import { join, resolve as pathResolve } from 'node:path';
+db/index.js:4:import { fileURLToPath } from 'node:url';
+db/index.js:5:
+db/index.js:6:const __dirname = fileURLToPath(new URL('.', import.meta.url));
+db/index.js:7:
+db/index.js:8:const DB_PATH = process.env.DB_PATH
+db/index.js:9:  ? pathResolve(process.env.DB_PATH)
+db/index.js:10:  : join(__dirname, 'data.db');
+db/index.js:11:
+db/index.js:12:const db = new Database(DB_PATH, {
+db/index.js:13:  verbose: process.env.SQL_DEBUG ? console.log : undefined,
+db/index.js:14:});
+db/index.js:15:
+db/index.js:16:const schemaPath = join(__dirname, 'schema.sql');
+db/index.js:17:const schema = readFileSync(schemaPath, 'utf8');
+db/index.js:18:db.exec(schema);
+db/index.js:19:
+db/index.js:20:export default db;
+db/schema.sql:1:CREATE TABLE IF NOT EXISTS todos (
+db/schema.sql:2:  id TEXT PRIMARY KEY,
+db/schema.sql:3:  title TEXT NOT NULL,
+db/schema.sql:4:  priority TEXT NOT NULL CHECK (priority IN ('URGENTE','NORMALE','FAIBLE')),
+db/schema.sql:5:  createdAt TEXT NOT NULL
+db/schema.sql:6:);
+db/schema.sql:7:CREATE INDEX IF NOT EXISTS idx_todos_createdAt ON todos(createdAt);
+server.js:1:import express from 'express';
+server.js:2:import { dao } from './dao/index.js';
+server.js:3:
+server.js:4:const app = express();
+server.js:5:const PORT = process.env.PORT || 3000;
+server.js:6:
+server.js:7:app.use(express.json());
+server.js:8:app.use(express.static('public'));
+server.js:9:
+server.js:10:const PRIORITIES = new Set(['URGENTE', 'NORMALE', 'FAIBLE']);
+server.js:11:
+server.js:12:function uid() {
+server.js:13:    return Math.random().toString(36).slice(2, 10);
+server.js:14:}
+server.js:15:
+server.js:16:app.get('/api/v1/todos', (req, res) => {
+server.js:17:    res.json(dao.list());
+server.js:18:});
+server.js:19:
+server.js:20:app.post('/api/v1/todos', (req, res) => {
+server.js:21:    const { title, priority } = req.body || {};
+server.js:22:
+server.js:23:    if (typeof title !== 'string' || title.trim() === '') {
+server.js:24:        return res.status(400).json({
+server.js:25:            error: 'title is required (non-empty string)'
+server.js:26:        });
+server.js:27:    }
+server.js:28:
+server.js:29:    if (!PRIORITIES.has(priority)) {
+server.js:30:        return res.status(400).json({
+server.js:31:            error: 'priority must be URGENTE | NORMALE | FAIBLE'
+server.js:32:        });
+server.js:33:    }
+server.js:34:
+server.js:35:    const todo = {
+server.js:36:        id: uid(),
+server.js:37:        title: title.trim(),
+server.js:38:        priority,
+server.js:39:        createdAt: new Date().toISOString()
+server.js:40:    };
+server.js:41:
+server.js:42:    try {
+server.js:43:        dao.create(todo);
+server.js:44:        return res.status(201).json(todo);
+server.js:45:    } catch (e) {
+server.js:46:        console.error(e);
+server.js:47:        return res.status(500).json({ error: 'DB insert failed' });
+server.js:48:    }
+server.js:49:});
+server.js:50:
+server.js:51:app.delete('/api/v1/todos/:id', (req, res) => {
+server.js:52:    try {
+server.js:53:        const changes = dao.delete(req.params.id);
+server.js:54:
+server.js:55:        if (changes === 0) {
+server.js:56:            return res.status(404).json({ error: 'Not Found' });
+server.js:57:        }
+server.js:58:
+server.js:59:        return res.status(204).end();
+server.js:60:    } catch (e) {
+server.js:61:        console.error(e);
+server.js:62:        return res.status(500).json({ error: 'DB delete failed' });
+server.js:63:    }
+server.js:64:});
+server.js:65:
+server.js:66:app.listen(PORT, () => {
+server.js:67:    console.log(`API ready on http://localhost:${PORT}`);
+server.js:68:});
+.gitignore:1:*.db
+.gitignore:2:*.db-journal
+.gitignore:3:node_modules/
+dao/index.js:1:import db from '../db/index.js';
+dao/index.js:2:
+dao/index.js:3:const stmtList = db.prepare(`
+dao/index.js:4:  SELECT id, title, priority, createdAt
+dao/index.js:5:  FROM todos
+dao/index.js:6:  ORDER BY datetime(createdAt) DESC
+dao/index.js:7:`);
+dao/index.js:8:
+dao/index.js:9:const stmtGet = db.prepare('SELECT id FROM todos WHERE id = ?');
+dao/index.js:10:const stmtInsert = db.prepare('INSERT INTO todos (id, title, priority, createdAt) VALUES (?,?,?,?)');
+dao/index.js:11:const stmtDelete = db.prepare('DELETE FROM todos WHERE id = ?');
+dao/index.js:12:
+dao/index.js:13:export const dao = {
+dao/index.js:14:  list() { return stmtList.all(); },
+dao/index.js:15:  get(id) { return stmtGet.get(id); },
+dao/index.js:16:  create(todo) { stmtInsert.run(todo.id, todo.title, todo.priority, todo.createdAt); },
+dao/index.js:17:  delete(id) { return stmtDelete.run(id).changes; }
+dao/index.js:18:};
+package-lock.json:1:{
+package-lock.json:2:  "name": "tp3",
+package-lock.json:3:  "lockfileVersion": 3,
+package-lock.json:4:  "requires": true,
+package-lock.json:5:  "packages": {
+package-lock.json:6:    "": {
+package-lock.json:7:      "dependencies": {
+package-lock.json:8:        "better-sqlite3": "^12.11.1",
+package-lock.json:9:        "express": "^5.2.1"
+package-lock.json:10:      }
+package-lock.json:11:    },
+package-lock.json:12:    "node_modules/accepts": {
+package-lock.json:13:      "version": "2.0.0",
+package-lock.json:14:      "resolved": "https://registry.npmjs.org/accepts/-/accepts-2.0.0.tgz",
+package-lock.json:15:      "integrity": "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==",
+package-lock.json:16:      "license": "MIT",
+package-lock.json:17:      "dependencies": {
+package-lock.json:18:        "mime-types": "^3.0.0",
+package-lock.json:19:        "negotiator": "^1.0.0"
+package-lock.json:20:      },
+package-lock.json:21:      "engines": {
+package-lock.json:22:        "node": ">= 0.6"
+package-lock.json:23:      }
+package-lock.json:24:    },
+package-lock.json:25:    "node_modules/base64-js": {
+package-lock.json:26:      "version": "1.5.1",
+package-lock.json:27:      "resolved": "https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz",
+package-lock.json:28:      "integrity": "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==",
+package-lock.json:29:      "funding": [
+package-lock.json:30:        {
+package-lock.json:31:          "type": "github",
+package-lock.json:32:          "url": "https://github.com/sponsors/feross"
+package-lock.json:33:        },
+package-lock.json:34:        {
+package-lock.json:35:          "type": "patreon",
+package-lock.json:36:          "url": "https://www.patreon.com/feross"
+package-lock.json:37:        },
+package-lock.json:38:        {
+package-lock.json:39:          "type": "consulting",
+package-lock.json:40:          "url": "https://feross.org/support"
+package-lock.json:41:        }
+package-lock.json:42:      ],
+package-lock.json:43:      "license": "MIT"
+package-lock.json:44:    },
+package-lock.json:45:    "node_modules/better-sqlite3": {
+package-lock.json:46:      "version": "12.11.1",
+package-lock.json:47:      "resolved": "https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.11.1.tgz",
+package-lock.json:48:      "integrity": "sha512-dq9AtApgg5PGFtBzPFSBl3HZQjHok5gaQCM6zh2Yk0aSmDCs1CbnVI8/HgASQkNKsWFpseIO9beg5xxpYhbIfA==",
+package-lock.json:49:      "hasInstallScript": true,
+package-lock.json:50:      "license": "MIT",
+package-lock.json:51:      "dependencies": {
+package-lock.json:52:        "bindings": "^1.5.0",
+package-lock.json:53:        "prebuild-install": "^7.1.1"
+package-lock.json:54:      },
+package-lock.json:55:      "engines": {
+package-lock.json:56:        "node": "20.x || 22.x || 23.x || 24.x || 25.x || 26.x"
+package-lock.json:57:      }
+package-lock.json:58:    },
+package-lock.json:59:    "node_modules/bindings": {
+package-lock.json:60:      "version": "1.5.0",
+package-lock.json:61:      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz",
+package-lock.json:62:      "integrity": "sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==",
+package-lock.json:63:      "license": "MIT",
+package-lock.json:64:      "dependencies": {
+package-lock.json:65:        "file-uri-to-path": "1.0.0"
+package-lock.json:66:      }
+package-lock.json:67:    },
+package-lock.json:68:    "node_modules/bl": {
+package-lock.json:69:      "version": "4.1.0",
+package-lock.json:70:      "resolved": "https://registry.npmjs.org/bl/-/bl-4.1.0.tgz",
+package-lock.json:71:      "integrity": "sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==",
+package-lock.json:72:      "license": "MIT",
+package-lock.json:73:      "dependencies": {
+package-lock.json:74:        "buffer": "^5.5.0",
+package-lock.json:75:        "inherits": "^2.0.4",
+package-lock.json:76:        "readable-stream": "^3.4.0"
+package-lock.json:77:      }
+package-lock.json:78:    },
+package-lock.json:79:    "node_modules/body-parser": {
+package-lock.json:80:      "version": "2.3.0",
+package-lock.json:81:      "resolved": "https://registry.npmjs.org/body-parser/-/body-parser-2.3.0.tgz",
+package-lock.json:82:      "integrity": "sha512-2cGmJupaNgg+QUwVLAucDuWuoMZ6EX9iHDRswZ5lsNYEmwPaRknMPCLZz07yTzVq/83p4o/wzbDZbBrTvGGTIw==",
+package-lock.json:83:      "license": "MIT",
+package-lock.json:84:      "dependencies": {
+package-lock.json:85:        "bytes": "^3.1.2",
+package-lock.json:86:        "content-type": "^2.0.0",
+package-lock.json:87:        "debug": "^4.4.3",
+package-lock.json:88:        "http-errors": "^2.0.1",
+package-lock.json:89:        "iconv-lite": "^0.7.2",
+package-lock.json:90:        "on-finished": "^2.4.1",
+package-lock.json:91:        "qs": "^6.15.2",
+package-lock.json:92:        "raw-body": "^3.0.2",
+package-lock.json:93:        "type-is": "^2.1.0"
+package-lock.json:94:      },
+package-lock.json:95:      "engines": {
+package-lock.json:96:        "node": ">=18"
+package-lock.json:97:      },
+package-lock.json:98:      "funding": {
+package-lock.json:99:        "type": "opencollective",
+package-lock.json:100:        "url": "https://opencollective.com/express"
+package-lock.json:101:      }
+package-lock.json:102:    },
+package-lock.json:103:    "node_modules/body-parser/node_modules/content-type": {
+package-lock.json:104:      "version": "2.1.0",
+package-lock.json:105:      "resolved": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz",
+package-lock.json:106:      "integrity": "sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==",
+package-lock.json:107:      "license": "MIT",
+package-lock.json:108:      "engines": {
+package-lock.json:109:        "node": ">=18"
+package-lock.json:110:      },
+package-lock.json:111:      "funding": {
+package-lock.json:112:        "type": "opencollective",
+package-lock.json:113:        "url": "https://opencollective.com/express"
+package-lock.json:114:      }
+package-lock.json:115:    },
+package-lock.json:116:    "node_modules/buffer": {
+package-lock.json:117:      "version": "5.7.1",
+package-lock.json:118:      "resolved": "https://registry.npmjs.org/buffer/-/buffer-5.7.1.tgz",
+package-lock.json:119:      "integrity": "sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==",
+package-lock.json:120:      "funding": [
+package-lock.json:121:        {
+package-lock.json:122:          "type": "github",
+package-lock.json:123:          "url": "https://github.com/sponsors/feross"
+package-lock.json:124:        },
+package-lock.json:125:        {
+package-lock.json:126:          "type": "patreon",
+package-lock.json:127:          "url": "https://www.patreon.com/feross"
+package-lock.json:128:        },
+package-lock.json:129:        {
+package-lock.json:130:          "type": "consulting",
+package-lock.json:131:          "url": "https://feross.org/support"
+package-lock.json:132:        }
+package-lock.json:133:      ],
+package-lock.json:134:      "license": "MIT",
+package-lock.json:135:      "dependencies": {
+package-lock.json:136:        "base64-js": "^1.3.1",
+package-lock.json:137:        "ieee754": "^1.1.13"
+package-lock.json:138:      }
+package-lock.json:139:    },
+package-lock.json:140:    "node_modules/bytes": {
+package-lock.json:141:      "version": "3.1.2",
+package-lock.json:142:      "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.1.2.tgz",
+package-lock.json:143:      "integrity": "sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==",
+package-lock.json:144:      "license": "MIT",
+package-lock.json:145:      "engines": {
+package-lock.json:146:        "node": ">= 0.8"
+package-lock.json:147:      }
+package-lock.json:148:    },
+package-lock.json:149:    "node_modules/call-bind-apply-helpers": {
+package-lock.json:150:      "version": "1.0.2",
+package-lock.json:151:      "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+package-lock.json:152:      "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+package-lock.json:153:      "license": "MIT",
+package-lock.json:154:      "dependencies": {
+package-lock.json:155:        "es-errors": "^1.3.0",
+package-lock.json:156:        "function-bind": "^1.1.2"
+package-lock.json:157:      },
+package-lock.json:158:      "engines": {
+package-lock.json:159:        "node": ">= 0.4"
+package-lock.json:160:      }
+package-lock.json:161:    },
+package-lock.json:162:    "node_modules/call-bound": {
+package-lock.json:163:      "version": "1.0.4",
+package-lock.json:164:      "resolved": "https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz",
+package-lock.json:165:      "integrity": "sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==",
+package-lock.json:166:      "license": "MIT",
+package-lock.json:167:      "dependencies": {
+package-lock.json:168:        "call-bind-apply-helpers": "^1.0.2",
+package-lock.json:169:        "get-intrinsic": "^1.3.0"
+package-lock.json:170:      },
+package-lock.json:171:      "engines": {
+package-lock.json:172:        "node": ">= 0.4"
+package-lock.json:173:      },
+package-lock.json:174:      "funding": {
+package-lock.json:175:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:176:      }
+package-lock.json:177:    },
+package-lock.json:178:    "node_modules/chownr": {
+package-lock.json:179:      "version": "1.1.4",
+package-lock.json:180:      "resolved": "https://registry.npmjs.org/chownr/-/chownr-1.1.4.tgz",
+package-lock.json:181:      "integrity": "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==",
+package-lock.json:182:      "license": "ISC"
+package-lock.json:183:    },
+package-lock.json:184:    "node_modules/content-disposition": {
+package-lock.json:185:      "version": "1.1.0",
+package-lock.json:186:      "resolved": "https://registry.npmjs.org/content-disposition/-/content-disposition-1.1.0.tgz",
+package-lock.json:187:      "integrity": "sha512-5jRCH9Z/+DRP7rkvY83B+yGIGX96OYdJmzngqnw2SBSxqCFPd0w2km3s5iawpGX8krnwSGmF0FW5Nhr0Hfai3g==",
+package-lock.json:188:      "license": "MIT",
+package-lock.json:189:      "engines": {
+package-lock.json:190:        "node": ">=18"
+package-lock.json:191:      },
+package-lock.json:192:      "funding": {
+package-lock.json:193:        "type": "opencollective",
+package-lock.json:194:        "url": "https://opencollective.com/express"
+package-lock.json:195:      }
+package-lock.json:196:    },
+package-lock.json:197:    "node_modules/content-type": {
+package-lock.json:198:      "version": "1.0.5",
+package-lock.json:199:      "resolved": "https://registry.npmjs.org/content-type/-/content-type-1.0.5.tgz",
+package-lock.json:200:      "integrity": "sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==",
+package-lock.json:201:      "license": "MIT",
+package-lock.json:202:      "engines": {
+package-lock.json:203:        "node": ">= 0.6"
+package-lock.json:204:      }
+package-lock.json:205:    },
+package-lock.json:206:    "node_modules/cookie": {
+package-lock.json:207:      "version": "0.7.2",
+package-lock.json:208:      "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.7.2.tgz",
+package-lock.json:209:      "integrity": "sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==",
+package-lock.json:210:      "license": "MIT",
+package-lock.json:211:      "engines": {
+package-lock.json:212:        "node": ">= 0.6"
+package-lock.json:213:      }
+package-lock.json:214:    },
+package-lock.json:215:    "node_modules/cookie-signature": {
+package-lock.json:216:      "version": "1.2.2",
+package-lock.json:217:      "resolved": "https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.2.2.tgz",
+package-lock.json:218:      "integrity": "sha512-D76uU73ulSXrD1UXF4KE2TMxVVwhsnCgfAyTg9k8P6KGZjlXKrOLe4dJQKI3Bxi5wjesZoFXJWElNWBjPZMbhg==",
+package-lock.json:219:      "license": "MIT",
+package-lock.json:220:      "engines": {
+package-lock.json:221:        "node": ">=6.6.0"
+package-lock.json:222:      }
+package-lock.json:223:    },
+package-lock.json:224:    "node_modules/debug": {
+package-lock.json:225:      "version": "4.4.3",
+package-lock.json:226:      "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+package-lock.json:227:      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+package-lock.json:228:      "license": "MIT",
+package-lock.json:229:      "dependencies": {
+package-lock.json:230:        "ms": "^2.1.3"
+package-lock.json:231:      },
+package-lock.json:232:      "engines": {
+package-lock.json:233:        "node": ">=6.0"
+package-lock.json:234:      },
+package-lock.json:235:      "peerDependenciesMeta": {
+package-lock.json:236:        "supports-color": {
+package-lock.json:237:          "optional": true
+package-lock.json:238:        }
+package-lock.json:239:      }
+package-lock.json:240:    },
+package-lock.json:241:    "node_modules/decompress-response": {
+package-lock.json:242:      "version": "6.0.0",
+package-lock.json:243:      "resolved": "https://registry.npmjs.org/decompress-response/-/decompress-response-6.0.0.tgz",
+package-lock.json:244:      "integrity": "sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==",
+package-lock.json:245:      "license": "MIT",
+package-lock.json:246:      "dependencies": {
+package-lock.json:247:        "mimic-response": "^3.1.0"
+package-lock.json:248:      },
+package-lock.json:249:      "engines": {
+package-lock.json:250:        "node": ">=10"
+package-lock.json:251:      },
+package-lock.json:252:      "funding": {
+package-lock.json:253:        "url": "https://github.com/sponsors/sindresorhus"
+package-lock.json:254:      }
+package-lock.json:255:    },
+package-lock.json:256:    "node_modules/deep-extend": {
+package-lock.json:257:      "version": "0.6.0",
+package-lock.json:258:      "resolved": "https://registry.npmjs.org/deep-extend/-/deep-extend-0.6.0.tgz",
+package-lock.json:259:      "integrity": "sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==",
+package-lock.json:260:      "license": "MIT",
+package-lock.json:261:      "engines": {
+package-lock.json:262:        "node": ">=4.0.0"
+package-lock.json:263:      }
+package-lock.json:264:    },
+package-lock.json:265:    "node_modules/depd": {
+package-lock.json:266:      "version": "2.0.0",
+package-lock.json:267:      "resolved": "https://registry.npmjs.org/depd/-/depd-2.0.0.tgz",
+package-lock.json:268:      "integrity": "sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==",
+package-lock.json:269:      "license": "MIT",
+package-lock.json:270:      "engines": {
+package-lock.json:271:        "node": ">= 0.8"
+package-lock.json:272:      }
+package-lock.json:273:    },
+package-lock.json:274:    "node_modules/detect-libc": {
+package-lock.json:275:      "version": "2.1.2",
+package-lock.json:276:      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz",
+package-lock.json:277:      "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==",
+package-lock.json:278:      "license": "Apache-2.0",
+package-lock.json:279:      "engines": {
+package-lock.json:280:        "node": ">=8"
+package-lock.json:281:      }
+package-lock.json:282:    },
+package-lock.json:283:    "node_modules/dunder-proto": {
+package-lock.json:284:      "version": "1.0.1",
+package-lock.json:285:      "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+package-lock.json:286:      "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+package-lock.json:287:      "license": "MIT",
+package-lock.json:288:      "dependencies": {
+package-lock.json:289:        "call-bind-apply-helpers": "^1.0.1",
+package-lock.json:290:        "es-errors": "^1.3.0",
+package-lock.json:291:        "gopd": "^1.2.0"
+package-lock.json:292:      },
+package-lock.json:293:      "engines": {
+package-lock.json:294:        "node": ">= 0.4"
+package-lock.json:295:      }
+package-lock.json:296:    },
+package-lock.json:297:    "node_modules/ee-first": {
+package-lock.json:298:      "version": "1.1.1",
+package-lock.json:299:      "resolved": "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz",
+package-lock.json:300:      "integrity": "sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==",
+package-lock.json:301:      "license": "MIT"
+package-lock.json:302:    },
+package-lock.json:303:    "node_modules/encodeurl": {
+package-lock.json:304:      "version": "2.0.0",
+package-lock.json:305:      "resolved": "https://registry.npmjs.org/encodeurl/-/encodeurl-2.0.0.tgz",
+package-lock.json:306:      "integrity": "sha512-Q0n9HRi4m6JuGIV1eFlmvJB7ZEVxu93IrMyiMsGC0lrMJMWzRgx6WGquyfQgZVb31vhGgXnfmPNNXmxnOkRBrg==",
+package-lock.json:307:      "license": "MIT",
+package-lock.json:308:      "engines": {
+package-lock.json:309:        "node": ">= 0.8"
+package-lock.json:310:      }
+package-lock.json:311:    },
+package-lock.json:312:    "node_modules/end-of-stream": {
+package-lock.json:313:      "version": "1.4.5",
+package-lock.json:314:      "resolved": "https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.5.tgz",
+package-lock.json:315:      "integrity": "sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg==",
+package-lock.json:316:      "license": "MIT",
+package-lock.json:317:      "dependencies": {
+package-lock.json:318:        "once": "^1.4.0"
+package-lock.json:319:      }
+package-lock.json:320:    },
+package-lock.json:321:    "node_modules/es-define-property": {
+package-lock.json:322:      "version": "1.0.1",
+package-lock.json:323:      "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+package-lock.json:324:      "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==",
+package-lock.json:325:      "license": "MIT",
+package-lock.json:326:      "engines": {
+package-lock.json:327:        "node": ">= 0.4"
+package-lock.json:328:      }
+package-lock.json:329:    },
+package-lock.json:330:    "node_modules/es-errors": {
+package-lock.json:331:      "version": "1.3.0",
+package-lock.json:332:      "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+package-lock.json:333:      "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+package-lock.json:334:      "license": "MIT",
+package-lock.json:335:      "engines": {
+package-lock.json:336:        "node": ">= 0.4"
+package-lock.json:337:      }
+package-lock.json:338:    },
+package-lock.json:339:    "node_modules/es-object-atoms": {
+package-lock.json:340:      "version": "1.1.2",
+package-lock.json:341:      "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.2.tgz",
+package-lock.json:342:      "integrity": "sha512-HWcBoN6NileqtSydK2FqHbS/LoDd2pqrnQHLyJzBj4kOp/ky2MWMN694xOfkK8/SnUsW2DH7EfyVlydKCsm1Zw==",
+package-lock.json:343:      "license": "MIT",
+package-lock.json:344:      "dependencies": {
+package-lock.json:345:        "es-errors": "^1.3.0"
+package-lock.json:346:      },
+package-lock.json:347:      "engines": {
+package-lock.json:348:        "node": ">= 0.4"
+package-lock.json:349:      }
+package-lock.json:350:    },
+package-lock.json:351:    "node_modules/escape-html": {
+package-lock.json:352:      "version": "1.0.3",
+package-lock.json:353:      "resolved": "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz",
+package-lock.json:354:      "integrity": "sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==",
+package-lock.json:355:      "license": "MIT"
+package-lock.json:356:    },
+package-lock.json:357:    "node_modules/etag": {
+package-lock.json:358:      "version": "1.8.1",
+package-lock.json:359:      "resolved": "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz",
+package-lock.json:360:      "integrity": "sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==",
+package-lock.json:361:      "license": "MIT",
+package-lock.json:362:      "engines": {
+package-lock.json:363:        "node": ">= 0.6"
+package-lock.json:364:      }
+package-lock.json:365:    },
+package-lock.json:366:    "node_modules/expand-template": {
+package-lock.json:367:      "version": "2.0.3",
+package-lock.json:368:      "resolved": "https://registry.npmjs.org/expand-template/-/expand-template-2.0.3.tgz",
+package-lock.json:369:      "integrity": "sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==",
+package-lock.json:370:      "license": "(MIT OR WTFPL)",
+package-lock.json:371:      "engines": {
+package-lock.json:372:        "node": ">=6"
+package-lock.json:373:      }
+package-lock.json:374:    },
+package-lock.json:375:    "node_modules/express": {
+package-lock.json:376:      "version": "5.2.1",
+package-lock.json:377:      "resolved": "https://registry.npmjs.org/express/-/express-5.2.1.tgz",
+package-lock.json:378:      "integrity": "sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==",
+package-lock.json:379:      "license": "MIT",
+package-lock.json:380:      "dependencies": {
+package-lock.json:381:        "accepts": "^2.0.0",
+package-lock.json:382:        "body-parser": "^2.2.1",
+package-lock.json:383:        "content-disposition": "^1.0.0",
+package-lock.json:384:        "content-type": "^1.0.5",
+package-lock.json:385:        "cookie": "^0.7.1",
+package-lock.json:386:        "cookie-signature": "^1.2.1",
+package-lock.json:387:        "debug": "^4.4.0",
+package-lock.json:388:        "depd": "^2.0.0",
+package-lock.json:389:        "encodeurl": "^2.0.0",
+package-lock.json:390:        "escape-html": "^1.0.3",
+package-lock.json:391:        "etag": "^1.8.1",
+package-lock.json:392:        "finalhandler": "^2.1.0",
+package-lock.json:393:        "fresh": "^2.0.0",
+package-lock.json:394:        "http-errors": "^2.0.0",
+package-lock.json:395:        "merge-descriptors": "^2.0.0",
+package-lock.json:396:        "mime-types": "^3.0.0",
+package-lock.json:397:        "on-finished": "^2.4.1",
+package-lock.json:398:        "once": "^1.4.0",
+package-lock.json:399:        "parseurl": "^1.3.3",
+package-lock.json:400:        "proxy-addr": "^2.0.7",
+package-lock.json:401:        "qs": "^6.14.0",
+package-lock.json:402:        "range-parser": "^1.2.1",
+package-lock.json:403:        "router": "^2.2.0",
+package-lock.json:404:        "send": "^1.1.0",
+package-lock.json:405:        "serve-static": "^2.2.0",
+package-lock.json:406:        "statuses": "^2.0.1",
+package-lock.json:407:        "type-is": "^2.0.1",
+package-lock.json:408:        "vary": "^1.1.2"
+package-lock.json:409:      },
+package-lock.json:410:      "engines": {
+package-lock.json:411:        "node": ">= 18"
+package-lock.json:412:      },
+package-lock.json:413:      "funding": {
+package-lock.json:414:        "type": "opencollective",
+package-lock.json:415:        "url": "https://opencollective.com/express"
+package-lock.json:416:      }
+package-lock.json:417:    },
+package-lock.json:418:    "node_modules/file-uri-to-path": {
+package-lock.json:419:      "version": "1.0.0",
+package-lock.json:420:      "resolved": "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz",
+package-lock.json:421:      "integrity": "sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==",
+package-lock.json:422:      "license": "MIT"
+package-lock.json:423:    },
+package-lock.json:424:    "node_modules/finalhandler": {
+package-lock.json:425:      "version": "2.1.1",
+package-lock.json:426:      "resolved": "https://registry.npmjs.org/finalhandler/-/finalhandler-2.1.1.tgz",
+package-lock.json:427:      "integrity": "sha512-S8KoZgRZN+a5rNwqTxlZZePjT/4cnm0ROV70LedRHZ0p8u9fRID0hJUZQpkKLzro8LfmC8sx23bY6tVNxv8pQA==",
+package-lock.json:428:      "license": "MIT",
+package-lock.json:429:      "dependencies": {
+package-lock.json:430:        "debug": "^4.4.0",
+package-lock.json:431:        "encodeurl": "^2.0.0",
+package-lock.json:432:        "escape-html": "^1.0.3",
+package-lock.json:433:        "on-finished": "^2.4.1",
+package-lock.json:434:        "parseurl": "^1.3.3",
+package-lock.json:435:        "statuses": "^2.0.1"
+package-lock.json:436:      },
+package-lock.json:437:      "engines": {
+package-lock.json:438:        "node": ">= 18.0.0"
+package-lock.json:439:      },
+package-lock.json:440:      "funding": {
+package-lock.json:441:        "type": "opencollective",
+package-lock.json:442:        "url": "https://opencollective.com/express"
+package-lock.json:443:      }
+package-lock.json:444:    },
+package-lock.json:445:    "node_modules/forwarded": {
+package-lock.json:446:      "version": "0.2.0",
+package-lock.json:447:      "resolved": "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz",
+package-lock.json:448:      "integrity": "sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==",
+package-lock.json:449:      "license": "MIT",
+package-lock.json:450:      "engines": {
+package-lock.json:451:        "node": ">= 0.6"
+package-lock.json:452:      }
+package-lock.json:453:    },
+package-lock.json:454:    "node_modules/fresh": {
+package-lock.json:455:      "version": "2.0.0",
+package-lock.json:456:      "resolved": "https://registry.npmjs.org/fresh/-/fresh-2.0.0.tgz",
+package-lock.json:457:      "integrity": "sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==",
+package-lock.json:458:      "license": "MIT",
+package-lock.json:459:      "engines": {
+package-lock.json:460:        "node": ">= 0.8"
+package-lock.json:461:      }
+package-lock.json:462:    },
+package-lock.json:463:    "node_modules/fs-constants": {
+package-lock.json:464:      "version": "1.0.0",
+package-lock.json:465:      "resolved": "https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz",
+package-lock.json:466:      "integrity": "sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==",
+package-lock.json:467:      "license": "MIT"
+package-lock.json:468:    },
+package-lock.json:469:    "node_modules/function-bind": {
+package-lock.json:470:      "version": "1.1.2",
+package-lock.json:471:      "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+package-lock.json:472:      "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+package-lock.json:473:      "license": "MIT",
+package-lock.json:474:      "funding": {
+package-lock.json:475:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:476:      }
+package-lock.json:477:    },
+package-lock.json:478:    "node_modules/get-intrinsic": {
+package-lock.json:479:      "version": "1.3.0",
+package-lock.json:480:      "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+package-lock.json:481:      "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+package-lock.json:482:      "license": "MIT",
+package-lock.json:483:      "dependencies": {
+package-lock.json:484:        "call-bind-apply-helpers": "^1.0.2",
+package-lock.json:485:        "es-define-property": "^1.0.1",
+package-lock.json:486:        "es-errors": "^1.3.0",
+package-lock.json:487:        "es-object-atoms": "^1.1.1",
+package-lock.json:488:        "function-bind": "^1.1.2",
+package-lock.json:489:        "get-proto": "^1.0.1",
+package-lock.json:490:        "gopd": "^1.2.0",
+package-lock.json:491:        "has-symbols": "^1.1.0",
+package-lock.json:492:        "hasown": "^2.0.2",
+package-lock.json:493:        "math-intrinsics": "^1.1.0"
+package-lock.json:494:      },
+package-lock.json:495:      "engines": {
+package-lock.json:496:        "node": ">= 0.4"
+package-lock.json:497:      },
+package-lock.json:498:      "funding": {
+package-lock.json:499:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:500:      }
+package-lock.json:501:    },
+package-lock.json:502:    "node_modules/get-proto": {
+package-lock.json:503:      "version": "1.0.1",
+package-lock.json:504:      "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+package-lock.json:505:      "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+package-lock.json:506:      "license": "MIT",
+package-lock.json:507:      "dependencies": {
+package-lock.json:508:        "dunder-proto": "^1.0.1",
+package-lock.json:509:        "es-object-atoms": "^1.0.0"
+package-lock.json:510:      },
+package-lock.json:511:      "engines": {
+package-lock.json:512:        "node": ">= 0.4"
+package-lock.json:513:      }
+package-lock.json:514:    },
+package-lock.json:515:    "node_modules/github-from-package": {
+package-lock.json:516:      "version": "0.0.0",
+package-lock.json:517:      "resolved": "https://registry.npmjs.org/github-from-package/-/github-from-package-0.0.0.tgz",
+package-lock.json:518:      "integrity": "sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==",
+package-lock.json:519:      "license": "MIT"
+package-lock.json:520:    },
+package-lock.json:521:    "node_modules/gopd": {
+package-lock.json:522:      "version": "1.2.0",
+package-lock.json:523:      "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+package-lock.json:524:      "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==",
+package-lock.json:525:      "license": "MIT",
+package-lock.json:526:      "engines": {
+package-lock.json:527:        "node": ">= 0.4"
+package-lock.json:528:      },
+package-lock.json:529:      "funding": {
+package-lock.json:530:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:531:      }
+package-lock.json:532:    },
+package-lock.json:533:    "node_modules/has-symbols": {
+package-lock.json:534:      "version": "1.1.0",
+package-lock.json:535:      "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+package-lock.json:536:      "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==",
+package-lock.json:537:      "license": "MIT",
+package-lock.json:538:      "engines": {
+package-lock.json:539:        "node": ">= 0.4"
+package-lock.json:540:      },
+package-lock.json:541:      "funding": {
+package-lock.json:542:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:543:      }
+package-lock.json:544:    },
+package-lock.json:545:    "node_modules/hasown": {
+package-lock.json:546:      "version": "2.0.4",
+package-lock.json:547:      "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.4.tgz",
+package-lock.json:548:      "integrity": "sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==",
+package-lock.json:549:      "license": "MIT",
+package-lock.json:550:      "dependencies": {
+package-lock.json:551:        "function-bind": "^1.1.2"
+package-lock.json:552:      },
+package-lock.json:553:      "engines": {
+package-lock.json:554:        "node": ">= 0.4"
+package-lock.json:555:      }
+package-lock.json:556:    },
+package-lock.json:557:    "node_modules/http-errors": {
+package-lock.json:558:      "version": "2.0.1",
+package-lock.json:559:      "resolved": "https://registry.npmjs.org/http-errors/-/http-errors-2.0.1.tgz",
+package-lock.json:560:      "integrity": "sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ==",
+package-lock.json:561:      "license": "MIT",
+package-lock.json:562:      "dependencies": {
+package-lock.json:563:        "depd": "~2.0.0",
+package-lock.json:564:        "inherits": "~2.0.4",
+package-lock.json:565:        "setprototypeof": "~1.2.0",
+package-lock.json:566:        "statuses": "~2.0.2",
+package-lock.json:567:        "toidentifier": "~1.0.1"
+package-lock.json:568:      },
+package-lock.json:569:      "engines": {
+package-lock.json:570:        "node": ">= 0.8"
+package-lock.json:571:      },
+package-lock.json:572:      "funding": {
+package-lock.json:573:        "type": "opencollective",
+package-lock.json:574:        "url": "https://opencollective.com/express"
+package-lock.json:575:      }
+package-lock.json:576:    },
+package-lock.json:577:    "node_modules/iconv-lite": {
+package-lock.json:578:      "version": "0.7.3",
+package-lock.json:579:      "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.3.tgz",
+package-lock.json:580:      "integrity": "sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==",
+package-lock.json:581:      "license": "MIT",
+package-lock.json:582:      "dependencies": {
+package-lock.json:583:        "safer-buffer": ">= 2.1.2 < 3.0.0"
+package-lock.json:584:      },
+package-lock.json:585:      "engines": {
+package-lock.json:586:        "node": ">=0.10.0"
+package-lock.json:587:      },
+package-lock.json:588:      "funding": {
+package-lock.json:589:        "type": "opencollective",
+package-lock.json:590:        "url": "https://opencollective.com/express"
+package-lock.json:591:      }
+package-lock.json:592:    },
+package-lock.json:593:    "node_modules/ieee754": {
+package-lock.json:594:      "version": "1.2.1",
+package-lock.json:595:      "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",
+package-lock.json:596:      "integrity": "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==",
+package-lock.json:597:      "funding": [
+package-lock.json:598:        {
+package-lock.json:599:          "type": "github",
+package-lock.json:600:          "url": "https://github.com/sponsors/feross"
+package-lock.json:601:        },
+package-lock.json:602:        {
+package-lock.json:603:          "type": "patreon",
+package-lock.json:604:          "url": "https://www.patreon.com/feross"
+package-lock.json:605:        },
+package-lock.json:606:        {
+package-lock.json:607:          "type": "consulting",
+package-lock.json:608:          "url": "https://feross.org/support"
+package-lock.json:609:        }
+package-lock.json:610:      ],
+package-lock.json:611:      "license": "BSD-3-Clause"
+package-lock.json:612:    },
+package-lock.json:613:    "node_modules/inherits": {
+package-lock.json:614:      "version": "2.0.4",
+package-lock.json:615:      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz",
+package-lock.json:616:      "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==",
+package-lock.json:617:      "license": "ISC"
+package-lock.json:618:    },
+package-lock.json:619:    "node_modules/ini": {
+package-lock.json:620:      "version": "1.3.8",
+package-lock.json:621:      "resolved": "https://registry.npmjs.org/ini/-/ini-1.3.8.tgz",
+package-lock.json:622:      "integrity": "sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==",
+package-lock.json:623:      "license": "ISC"
+package-lock.json:624:    },
+package-lock.json:625:    "node_modules/ipaddr.js": {
+package-lock.json:626:      "version": "1.9.1",
+package-lock.json:627:      "resolved": "https://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.9.1.tgz",
+package-lock.json:628:      "integrity": "sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==",
+package-lock.json:629:      "license": "MIT",
+package-lock.json:630:      "engines": {
+package-lock.json:631:        "node": ">= 0.10"
+package-lock.json:632:      }
+package-lock.json:633:    },
+package-lock.json:634:    "node_modules/is-promise": {
+package-lock.json:635:      "version": "4.0.0",
+package-lock.json:636:      "resolved": "https://registry.npmjs.org/is-promise/-/is-promise-4.0.0.tgz",
+package-lock.json:637:      "integrity": "sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==",
+package-lock.json:638:      "license": "MIT"
+package-lock.json:639:    },
+package-lock.json:640:    "node_modules/math-intrinsics": {
+package-lock.json:641:      "version": "1.1.0",
+package-lock.json:642:      "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+package-lock.json:643:      "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==",
+package-lock.json:644:      "license": "MIT",
+package-lock.json:645:      "engines": {
+package-lock.json:646:        "node": ">= 0.4"
+package-lock.json:647:      }
+package-lock.json:648:    },
+package-lock.json:649:    "node_modules/media-typer": {
+package-lock.json:650:      "version": "1.1.1",
+package-lock.json:651:      "resolved": "https://registry.npmjs.org/media-typer/-/media-typer-1.1.1.tgz",
+package-lock.json:652:      "integrity": "sha512-yz3xRaG20c6/BOzvYoDaGtPmGscs7YivItZEEqe6GbwNfHuxu9YNmvnEkMzKldAGY4/80pRcQRZSEnhquk9XuQ==",
+package-lock.json:653:      "license": "MIT",
+package-lock.json:654:      "engines": {
+package-lock.json:655:        "node": ">= 0.8"
+package-lock.json:656:      },
+package-lock.json:657:      "funding": {
+package-lock.json:658:        "type": "opencollective",
+package-lock.json:659:        "url": "https://opencollective.com/express"
+package-lock.json:660:      }
+package-lock.json:661:    },
+package-lock.json:662:    "node_modules/merge-descriptors": {
+package-lock.json:663:      "version": "2.0.0",
+package-lock.json:664:      "resolved": "https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-2.0.0.tgz",
+package-lock.json:665:      "integrity": "sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==",
+package-lock.json:666:      "license": "MIT",
+package-lock.json:667:      "engines": {
+package-lock.json:668:        "node": ">=18"
+package-lock.json:669:      },
+package-lock.json:670:      "funding": {
+package-lock.json:671:        "url": "https://github.com/sponsors/sindresorhus"
+package-lock.json:672:      }
+package-lock.json:673:    },
+package-lock.json:674:    "node_modules/mime-db": {
+package-lock.json:675:      "version": "1.54.0",
+package-lock.json:676:      "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.54.0.tgz",
+package-lock.json:677:      "integrity": "sha512-aU5EJuIN2WDemCcAp2vFBfp/m4EAhWJnUNSSw0ixs7/kXbd6Pg64EmwJkNdFhB8aWt1sH2CTXrLxo/iAGV3oPQ==",
+package-lock.json:678:      "license": "MIT",
+package-lock.json:679:      "engines": {
+package-lock.json:680:        "node": ">= 0.6"
+package-lock.json:681:      }
+package-lock.json:682:    },
+package-lock.json:683:    "node_modules/mime-types": {
+package-lock.json:684:      "version": "3.0.2",
+package-lock.json:685:      "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-3.0.2.tgz",
+package-lock.json:686:      "integrity": "sha512-Lbgzdk0h4juoQ9fCKXW4by0UJqj+nOOrI9MJ1sSj4nI8aI2eo1qmvQEie4VD1glsS250n15LsWsYtCugiStS5A==",
+package-lock.json:687:      "license": "MIT",
+package-lock.json:688:      "dependencies": {
+package-lock.json:689:        "mime-db": "^1.54.0"
+package-lock.json:690:      },
+package-lock.json:691:      "engines": {
+package-lock.json:692:        "node": ">=18"
+package-lock.json:693:      },
+package-lock.json:694:      "funding": {
+package-lock.json:695:        "type": "opencollective",
+package-lock.json:696:        "url": "https://opencollective.com/express"
+package-lock.json:697:      }
+package-lock.json:698:    },
+package-lock.json:699:    "node_modules/mimic-response": {
+package-lock.json:700:      "version": "3.1.0",
+package-lock.json:701:      "resolved": "https://registry.npmjs.org/mimic-response/-/mimic-response-3.1.0.tgz",
+package-lock.json:702:      "integrity": "sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==",
+package-lock.json:703:      "license": "MIT",
+package-lock.json:704:      "engines": {
+package-lock.json:705:        "node": ">=10"
+package-lock.json:706:      },
+package-lock.json:707:      "funding": {
+package-lock.json:708:        "url": "https://github.com/sponsors/sindresorhus"
+package-lock.json:709:      }
+package-lock.json:710:    },
+package-lock.json:711:    "node_modules/minimist": {
+package-lock.json:712:      "version": "1.2.8",
+package-lock.json:713:      "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz",
+package-lock.json:714:      "integrity": "sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==",
+package-lock.json:715:      "license": "MIT",
+package-lock.json:716:      "funding": {
+package-lock.json:717:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:718:      }
+package-lock.json:719:    },
+package-lock.json:720:    "node_modules/mkdirp-classic": {
+package-lock.json:721:      "version": "0.5.3",
+package-lock.json:722:      "resolved": "https://registry.npmjs.org/mkdirp-classic/-/mkdirp-classic-0.5.3.tgz",
+package-lock.json:723:      "integrity": "sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==",
+package-lock.json:724:      "license": "MIT"
+package-lock.json:725:    },
+package-lock.json:726:    "node_modules/ms": {
+package-lock.json:727:      "version": "2.1.3",
+package-lock.json:728:      "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+package-lock.json:729:      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+package-lock.json:730:      "license": "MIT"
+package-lock.json:731:    },
+package-lock.json:732:    "node_modules/napi-build-utils": {
+package-lock.json:733:      "version": "2.0.0",
+package-lock.json:734:      "resolved": "https://registry.npmjs.org/napi-build-utils/-/napi-build-utils-2.0.0.tgz",
+package-lock.json:735:      "integrity": "sha512-GEbrYkbfF7MoNaoh2iGG84Mnf/WZfB0GdGEsM8wz7Expx/LlWf5U8t9nvJKXSp3qr5IsEbK04cBGhol/KwOsWA==",
+package-lock.json:736:      "license": "MIT"
+package-lock.json:737:    },
+package-lock.json:738:    "node_modules/negotiator": {
+package-lock.json:739:      "version": "1.1.0",
+package-lock.json:740:      "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-1.1.0.tgz",
+package-lock.json:741:      "integrity": "sha512-NMPBRMJgiQHjbd8phG3Vebdx4kZ1H121rbl5IkMqeOsahptB9BKo/d7oJ3zTXqTgagn2bWlNSXkh0QUGM31RYg==",
+package-lock.json:742:      "license": "MIT",
+package-lock.json:743:      "dependencies": {
+package-lock.json:744:        "content-type": "^2.1.0"
+package-lock.json:745:      },
+package-lock.json:746:      "engines": {
+package-lock.json:747:        "node": ">=18"
+package-lock.json:748:      },
+package-lock.json:749:      "funding": {
+package-lock.json:750:        "type": "opencollective",
+package-lock.json:751:        "url": "https://opencollective.com/express"
+package-lock.json:752:      }
+package-lock.json:753:    },
+package-lock.json:754:    "node_modules/negotiator/node_modules/content-type": {
+package-lock.json:755:      "version": "2.1.0",
+package-lock.json:756:      "resolved": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz",
+package-lock.json:757:      "integrity": "sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==",
+package-lock.json:758:      "license": "MIT",
+package-lock.json:759:      "engines": {
+package-lock.json:760:        "node": ">=18"
+package-lock.json:761:      },
+package-lock.json:762:      "funding": {
+package-lock.json:763:        "type": "opencollective",
+package-lock.json:764:        "url": "https://opencollective.com/express"
+package-lock.json:765:      }
+package-lock.json:766:    },
+package-lock.json:767:    "node_modules/node-abi": {
+package-lock.json:768:      "version": "3.98.0",
+package-lock.json:769:      "resolved": "https://registry.npmjs.org/node-abi/-/node-abi-3.98.0.tgz",
+package-lock.json:770:      "integrity": "sha512-Llh8noNw7s15m+rmIrZnZQbe4gLyasL9loT74rC92PkmwWKeEedKvc7o6pjp8B3MhrYT/Cl846NOYZbz1wmddw==",
+package-lock.json:771:      "license": "MIT",
+package-lock.json:772:      "dependencies": {
+package-lock.json:773:        "semver": "^7.3.5"
+package-lock.json:774:      },
+package-lock.json:775:      "engines": {
+package-lock.json:776:        "node": ">=10"
+package-lock.json:777:      }
+package-lock.json:778:    },
+package-lock.json:779:    "node_modules/object-inspect": {
+package-lock.json:780:      "version": "1.13.4",
+package-lock.json:781:      "resolved": "https://registry.npmjs.org/object-inspect/-/object-inspect-1.13.4.tgz",
+package-lock.json:782:      "integrity": "sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==",
+package-lock.json:783:      "license": "MIT",
+package-lock.json:784:      "engines": {
+package-lock.json:785:        "node": ">= 0.4"
+package-lock.json:786:      },
+package-lock.json:787:      "funding": {
+package-lock.json:788:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:789:      }
+package-lock.json:790:    },
+package-lock.json:791:    "node_modules/on-finished": {
+package-lock.json:792:      "version": "2.4.1",
+package-lock.json:793:      "resolved": "https://registry.npmjs.org/on-finished/-/on-finished-2.4.1.tgz",
+package-lock.json:794:      "integrity": "sha512-oVlzkg3ENAhCk2zdv7IJwd/QUD4z2RxRwpkcGY8psCVcCYZNq4wYnVWALHM+brtuJjePWiYF/ClmuDr8Ch5+kg==",
+package-lock.json:795:      "license": "MIT",
+package-lock.json:796:      "dependencies": {
+package-lock.json:797:        "ee-first": "1.1.1"
+package-lock.json:798:      },
+package-lock.json:799:      "engines": {
+package-lock.json:800:        "node": ">= 0.8"
+package-lock.json:801:      }
+package-lock.json:802:    },
+package-lock.json:803:    "node_modules/once": {
+package-lock.json:804:      "version": "1.4.0",
+package-lock.json:805:      "resolved": "https://registry.npmjs.org/once/-/once-1.4.0.tgz",
+package-lock.json:806:      "integrity": "sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==",
+package-lock.json:807:      "license": "ISC",
+package-lock.json:808:      "dependencies": {
+package-lock.json:809:        "wrappy": "1"
+package-lock.json:810:      }
+package-lock.json:811:    },
+package-lock.json:812:    "node_modules/parseurl": {
+package-lock.json:813:      "version": "1.3.3",
+package-lock.json:814:      "resolved": "https://registry.npmjs.org/parseurl/-/parseurl-1.3.3.tgz",
+package-lock.json:815:      "integrity": "sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==",
+package-lock.json:816:      "license": "MIT",
+package-lock.json:817:      "engines": {
+package-lock.json:818:        "node": ">= 0.8"
+package-lock.json:819:      }
+package-lock.json:820:    },
+package-lock.json:821:    "node_modules/path-to-regexp": {
+package-lock.json:822:      "version": "8.4.2",
+package-lock.json:823:      "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.4.2.tgz",
+package-lock.json:824:      "integrity": "sha512-qRcuIdP69NPm4qbACK+aDogI5CBDMi1jKe0ry5rSQJz8JVLsC7jV8XpiJjGRLLol3N+R5ihGYcrPLTno6pAdBA==",
+package-lock.json:825:      "license": "MIT",
+package-lock.json:826:      "funding": {
+package-lock.json:827:        "type": "opencollective",
+package-lock.json:828:        "url": "https://opencollective.com/express"
+package-lock.json:829:      }
+package-lock.json:830:    },
+package-lock.json:831:    "node_modules/prebuild-install": {
+package-lock.json:832:      "version": "7.1.3",
+package-lock.json:833:      "resolved": "https://registry.npmjs.org/prebuild-install/-/prebuild-install-7.1.3.tgz",
+package-lock.json:834:      "integrity": "sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==",
+package-lock.json:835:      "deprecated": "No longer maintained. Please contact the author of the relevant native addon; alternatives are available.",
+package-lock.json:836:      "license": "MIT",
+package-lock.json:837:      "dependencies": {
+package-lock.json:838:        "detect-libc": "^2.0.0",
+package-lock.json:839:        "expand-template": "^2.0.3",
+package-lock.json:840:        "github-from-package": "0.0.0",
+package-lock.json:841:        "minimist": "^1.2.3",
+package-lock.json:842:        "mkdirp-classic": "^0.5.3",
+package-lock.json:843:        "napi-build-utils": "^2.0.0",
+package-lock.json:844:        "node-abi": "^3.3.0",
+package-lock.json:845:        "pump": "^3.0.0",
+package-lock.json:846:        "rc": "^1.2.7",
+package-lock.json:847:        "simple-get": "^4.0.0",
+package-lock.json:848:        "tar-fs": "^2.0.0",
+package-lock.json:849:        "tunnel-agent": "^0.6.0"
+package-lock.json:850:      },
+package-lock.json:851:      "bin": {
+package-lock.json:852:        "prebuild-install": "bin.js"
+package-lock.json:853:      },
+package-lock.json:854:      "engines": {
+package-lock.json:855:        "node": ">=10"
+package-lock.json:856:      }
+package-lock.json:857:    },
+package-lock.json:858:    "node_modules/proxy-addr": {
+package-lock.json:859:      "version": "2.0.8",
+package-lock.json:860:      "resolved": "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.8.tgz",
+package-lock.json:861:      "integrity": "sha512-5nnx0yGyVUcY6t9RnWcARWtwT9F1D8O9rt08htPvnd49W1IgZtmLkhu9WfMzQj1cFxjHIO6connUNVW5k7AVyQ==",
+package-lock.json:862:      "license": "MIT",
+package-lock.json:863:      "dependencies": {
+package-lock.json:864:        "forwarded": "0.2.0",
+package-lock.json:865:        "ipaddr.js": "1.9.1"
+package-lock.json:866:      },
+package-lock.json:867:      "engines": {
+package-lock.json:868:        "node": ">= 0.10"
+package-lock.json:869:      },
+package-lock.json:870:      "funding": {
+package-lock.json:871:        "type": "opencollective",
+package-lock.json:872:        "url": "https://opencollective.com/express"
+package-lock.json:873:      }
+package-lock.json:874:    },
+package-lock.json:875:    "node_modules/pump": {
+package-lock.json:876:      "version": "3.0.4",
+package-lock.json:877:      "resolved": "https://registry.npmjs.org/pump/-/pump-3.0.4.tgz",
+package-lock.json:878:      "integrity": "sha512-VS7sjc6KR7e1ukRFhQSY5LM2uBWAUPiOPa/A3mkKmiMwSmRFUITt0xuj+/lesgnCv+dPIEYlkzrcyXgquIHMcA==",
+package-lock.json:879:      "license": "MIT",
+package-lock.json:880:      "dependencies": {
+package-lock.json:881:        "end-of-stream": "^1.1.0",
+package-lock.json:882:        "once": "^1.3.1"
+package-lock.json:883:      }
+package-lock.json:884:    },
+package-lock.json:885:    "node_modules/qs": {
+package-lock.json:886:      "version": "6.16.0",
+package-lock.json:887:      "resolved": "https://registry.npmjs.org/qs/-/qs-6.16.0.tgz",
+package-lock.json:888:      "integrity": "sha512-h6fhOIaRrID2CbEY2fqs+7t+UXZo+MLAnU5gRIq85uFtdiUPCdsApMlHhXogKVM4HM2DVbIjGNTTYH2OcmP1vA==",
+package-lock.json:889:      "license": "BSD-3-Clause",
+package-lock.json:890:      "dependencies": {
+package-lock.json:891:        "es-define-property": "^1.0.1",
+package-lock.json:892:        "side-channel": "^1.1.1"
+package-lock.json:893:      },
+package-lock.json:894:      "engines": {
+package-lock.json:895:        "node": ">=0.6"
+package-lock.json:896:      },
+package-lock.json:897:      "funding": {
+package-lock.json:898:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:899:      }
+package-lock.json:900:    },
+package-lock.json:901:    "node_modules/range-parser": {
+package-lock.json:902:      "version": "1.3.0",
+package-lock.json:903:      "resolved": "https://registry.npmjs.org/range-parser/-/range-parser-1.3.0.tgz",
+package-lock.json:904:      "integrity": "sha512-hek2mFQpPuI4E1BBKrSto+BU3e3x4xuarsbiwr3+lf7p44juvFMV0XFWQAP3xUyqXA4RrXLIoaSUGbSt056ZMw==",
+package-lock.json:905:      "license": "MIT",
+package-lock.json:906:      "engines": {
+package-lock.json:907:        "node": ">= 0.6"
+package-lock.json:908:      },
+package-lock.json:909:      "funding": {
+package-lock.json:910:        "type": "opencollective",
+package-lock.json:911:        "url": "https://opencollective.com/express"
+package-lock.json:912:      }
+package-lock.json:913:    },
+package-lock.json:914:    "node_modules/raw-body": {
+package-lock.json:915:      "version": "3.0.2",
+package-lock.json:916:      "resolved": "https://registry.npmjs.org/raw-body/-/raw-body-3.0.2.tgz",
+package-lock.json:917:      "integrity": "sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==",
+package-lock.json:918:      "license": "MIT",
+package-lock.json:919:      "dependencies": {
+package-lock.json:920:        "bytes": "~3.1.2",
+package-lock.json:921:        "http-errors": "~2.0.1",
+package-lock.json:922:        "iconv-lite": "~0.7.0",
+package-lock.json:923:        "unpipe": "~1.0.0"
+package-lock.json:924:      },
+package-lock.json:925:      "engines": {
+package-lock.json:926:        "node": ">= 0.10"
+package-lock.json:927:      }
+package-lock.json:928:    },
+package-lock.json:929:    "node_modules/rc": {
+package-lock.json:930:      "version": "1.2.8",
+package-lock.json:931:      "resolved": "https://registry.npmjs.org/rc/-/rc-1.2.8.tgz",
+package-lock.json:932:      "integrity": "sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==",
+package-lock.json:933:      "license": "(BSD-2-Clause OR MIT OR Apache-2.0)",
+package-lock.json:934:      "dependencies": {
+package-lock.json:935:        "deep-extend": "^0.6.0",
+package-lock.json:936:        "ini": "~1.3.0",
+package-lock.json:937:        "minimist": "^1.2.0",
+package-lock.json:938:        "strip-json-comments": "~2.0.1"
+package-lock.json:939:      },
+package-lock.json:940:      "bin": {
+package-lock.json:941:        "rc": "cli.js"
+package-lock.json:942:      }
+package-lock.json:943:    },
+package-lock.json:944:    "node_modules/readable-stream": {
+package-lock.json:945:      "version": "3.6.2",
+package-lock.json:946:      "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz",
+package-lock.json:947:      "integrity": "sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==",
+package-lock.json:948:      "license": "MIT",
+package-lock.json:949:      "dependencies": {
+package-lock.json:950:        "inherits": "^2.0.3",
+package-lock.json:951:        "string_decoder": "^1.1.1",
+package-lock.json:952:        "util-deprecate": "^1.0.1"
+package-lock.json:953:      },
+package-lock.json:954:      "engines": {
+package-lock.json:955:        "node": ">= 6"
+package-lock.json:956:      }
+package-lock.json:957:    },
+package-lock.json:958:    "node_modules/router": {
+package-lock.json:959:      "version": "2.2.0",
+package-lock.json:960:      "resolved": "https://registry.npmjs.org/router/-/router-2.2.0.tgz",
+package-lock.json:961:      "integrity": "sha512-nLTrUKm2UyiL7rlhapu/Zl45FwNgkZGaCpZbIHajDYgwlJCOzLSk+cIPAnsEqV955GjILJnKbdQC1nVPz+gAYQ==",
+package-lock.json:962:      "license": "MIT",
+package-lock.json:963:      "dependencies": {
+package-lock.json:964:        "debug": "^4.4.0",
+package-lock.json:965:        "depd": "^2.0.0",
+package-lock.json:966:        "is-promise": "^4.0.0",
+package-lock.json:967:        "parseurl": "^1.3.3",
+package-lock.json:968:        "path-to-regexp": "^8.0.0"
+package-lock.json:969:      },
+package-lock.json:970:      "engines": {
+package-lock.json:971:        "node": ">= 18"
+package-lock.json:972:      }
+package-lock.json:973:    },
+package-lock.json:974:    "node_modules/safe-buffer": {
+package-lock.json:975:      "version": "5.2.1",
+package-lock.json:976:      "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz",
+package-lock.json:977:      "integrity": "sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==",
+package-lock.json:978:      "funding": [
+package-lock.json:979:        {
+package-lock.json:980:          "type": "github",
+package-lock.json:981:          "url": "https://github.com/sponsors/feross"
+package-lock.json:982:        },
+package-lock.json:983:        {
+package-lock.json:984:          "type": "patreon",
+package-lock.json:985:          "url": "https://www.patreon.com/feross"
+package-lock.json:986:        },
+package-lock.json:987:        {
+package-lock.json:988:          "type": "consulting",
+package-lock.json:989:          "url": "https://feross.org/support"
+package-lock.json:990:        }
+package-lock.json:991:      ],
+package-lock.json:992:      "license": "MIT"
+package-lock.json:993:    },
+package-lock.json:994:    "node_modules/safer-buffer": {
+package-lock.json:995:      "version": "2.1.2",
+package-lock.json:996:      "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+package-lock.json:997:      "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==",
+package-lock.json:998:      "license": "MIT"
+package-lock.json:999:    },
+package-lock.json:1000:    "node_modules/semver": {
+package-lock.json:1001:      "version": "7.8.5",
+package-lock.json:1002:      "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+package-lock.json:1003:      "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+package-lock.json:1004:      "license": "ISC",
+package-lock.json:1005:      "bin": {
+package-lock.json:1006:        "semver": "bin/semver.js"
+package-lock.json:1007:      },
+package-lock.json:1008:      "engines": {
+package-lock.json:1009:        "node": ">=10"
+package-lock.json:1010:      }
+package-lock.json:1011:    },
+package-lock.json:1012:    "node_modules/send": {
+package-lock.json:1013:      "version": "1.2.1",
+package-lock.json:1014:      "resolved": "https://registry.npmjs.org/send/-/send-1.2.1.tgz",
+package-lock.json:1015:      "integrity": "sha512-1gnZf7DFcoIcajTjTwjwuDjzuz4PPcY2StKPlsGAQ1+YH20IRVrBaXSWmdjowTJ6u8Rc01PoYOGHXfP1mYcZNQ==",
+package-lock.json:1016:      "license": "MIT",
+package-lock.json:1017:      "dependencies": {
+package-lock.json:1018:        "debug": "^4.4.3",
+package-lock.json:1019:        "encodeurl": "^2.0.0",
+package-lock.json:1020:        "escape-html": "^1.0.3",
+package-lock.json:1021:        "etag": "^1.8.1",
+package-lock.json:1022:        "fresh": "^2.0.0",
+package-lock.json:1023:        "http-errors": "^2.0.1",
+package-lock.json:1024:        "mime-types": "^3.0.2",
+package-lock.json:1025:        "ms": "^2.1.3",
+package-lock.json:1026:        "on-finished": "^2.4.1",
+package-lock.json:1027:        "range-parser": "^1.2.1",
+package-lock.json:1028:        "statuses": "^2.0.2"
+package-lock.json:1029:      },
+package-lock.json:1030:      "engines": {
+package-lock.json:1031:        "node": ">= 18"
+package-lock.json:1032:      },
+package-lock.json:1033:      "funding": {
+package-lock.json:1034:        "type": "opencollective",
+package-lock.json:1035:        "url": "https://opencollective.com/express"
+package-lock.json:1036:      }
+package-lock.json:1037:    },
+package-lock.json:1038:    "node_modules/serve-static": {
+package-lock.json:1039:      "version": "2.2.1",
+package-lock.json:1040:      "resolved": "https://registry.npmjs.org/serve-static/-/serve-static-2.2.1.tgz",
+package-lock.json:1041:      "integrity": "sha512-xRXBn0pPqQTVQiC8wyQrKs2MOlX24zQ0POGaj0kultvoOCstBQM5yvOhAVSUwOMjQtTvsPWoNCHfPGwaaQJhTw==",
+package-lock.json:1042:      "license": "MIT",
+package-lock.json:1043:      "dependencies": {
+package-lock.json:1044:        "encodeurl": "^2.0.0",
+package-lock.json:1045:        "escape-html": "^1.0.3",
+package-lock.json:1046:        "parseurl": "^1.3.3",
+package-lock.json:1047:        "send": "^1.2.0"
+package-lock.json:1048:      },
+package-lock.json:1049:      "engines": {
+package-lock.json:1050:        "node": ">= 18"
+package-lock.json:1051:      },
+package-lock.json:1052:      "funding": {
+package-lock.json:1053:        "type": "opencollective",
+package-lock.json:1054:        "url": "https://opencollective.com/express"
+package-lock.json:1055:      }
+package-lock.json:1056:    },
+package-lock.json:1057:    "node_modules/setprototypeof": {
+package-lock.json:1058:      "version": "1.2.0",
+package-lock.json:1059:      "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz",
+package-lock.json:1060:      "integrity": "sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==",
+package-lock.json:1061:      "license": "ISC"
+package-lock.json:1062:    },
+package-lock.json:1063:    "node_modules/side-channel": {
+package-lock.json:1064:      "version": "1.1.1",
+package-lock.json:1065:      "resolved": "https://registry.npmjs.org/side-channel/-/side-channel-1.1.1.tgz",
+package-lock.json:1066:      "integrity": "sha512-6x6dK6zJdpTzF4sQeNYxwtvBzf6Eg4GtlesS94HOvTudUeyK2WXAaIfmDgsyslYrRBeFIlsi54AYsFGUuhmvrQ==",
+package-lock.json:1067:      "license": "MIT",
+package-lock.json:1068:      "dependencies": {
+package-lock.json:1069:        "es-errors": "^1.3.0",
+package-lock.json:1070:        "object-inspect": "^1.13.4",
+package-lock.json:1071:        "side-channel-list": "^1.0.1",
+package-lock.json:1072:        "side-channel-map": "^1.0.1",
+package-lock.json:1073:        "side-channel-weakmap": "^1.0.2"
+package-lock.json:1074:      },
+package-lock.json:1075:      "engines": {
+package-lock.json:1076:        "node": ">= 0.4"
+package-lock.json:1077:      },
+package-lock.json:1078:      "funding": {
+package-lock.json:1079:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:1080:      }
+package-lock.json:1081:    },
+package-lock.json:1082:    "node_modules/side-channel-list": {
+package-lock.json:1083:      "version": "1.0.1",
+package-lock.json:1084:      "resolved": "https://registry.npmjs.org/side-channel-list/-/side-channel-list-1.0.1.tgz",
+package-lock.json:1085:      "integrity": "sha512-mjn/0bi/oUURjc5Xl7IaWi/OJJJumuoJFQJfDDyO46+hBWsfaVM65TBHq2eoZBhzl9EchxOijpkbRC8SVBQU0w==",
+package-lock.json:1086:      "license": "MIT",
+package-lock.json:1087:      "dependencies": {
+package-lock.json:1088:        "es-errors": "^1.3.0",
+package-lock.json:1089:        "object-inspect": "^1.13.4"
+package-lock.json:1090:      },
+package-lock.json:1091:      "engines": {
+package-lock.json:1092:        "node": ">= 0.4"
+package-lock.json:1093:      },
+package-lock.json:1094:      "funding": {
+package-lock.json:1095:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:1096:      }
+package-lock.json:1097:    },
+package-lock.json:1098:    "node_modules/side-channel-map": {
+package-lock.json:1099:      "version": "1.0.1",
+package-lock.json:1100:      "resolved": "https://registry.npmjs.org/side-channel-map/-/side-channel-map-1.0.1.tgz",
+package-lock.json:1101:      "integrity": "sha512-VCjCNfgMsby3tTdo02nbjtM/ewra6jPHmpThenkTYh8pG9ucZ/1P8So4u4FGBek/BjpOVsDCMoLA/iuBKIFXRA==",
+package-lock.json:1102:      "license": "MIT",
+package-lock.json:1103:      "dependencies": {
+package-lock.json:1104:        "call-bound": "^1.0.2",
+package-lock.json:1105:        "es-errors": "^1.3.0",
+package-lock.json:1106:        "get-intrinsic": "^1.2.5",
+package-lock.json:1107:        "object-inspect": "^1.13.3"
+package-lock.json:1108:      },
+package-lock.json:1109:      "engines": {
+package-lock.json:1110:        "node": ">= 0.4"
+package-lock.json:1111:      },
+package-lock.json:1112:      "funding": {
+package-lock.json:1113:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:1114:      }
+package-lock.json:1115:    },
+package-lock.json:1116:    "node_modules/side-channel-weakmap": {
+package-lock.json:1117:      "version": "1.0.2",
+package-lock.json:1118:      "resolved": "https://registry.npmjs.org/side-channel-weakmap/-/side-channel-weakmap-1.0.2.tgz",
+package-lock.json:1119:      "integrity": "sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A==",
+package-lock.json:1120:      "license": "MIT",
+package-lock.json:1121:      "dependencies": {
+package-lock.json:1122:        "call-bound": "^1.0.2",
+package-lock.json:1123:        "es-errors": "^1.3.0",
+package-lock.json:1124:        "get-intrinsic": "^1.2.5",
+package-lock.json:1125:        "object-inspect": "^1.13.3",
+package-lock.json:1126:        "side-channel-map": "^1.0.1"
+package-lock.json:1127:      },
+package-lock.json:1128:      "engines": {
+package-lock.json:1129:        "node": ">= 0.4"
+package-lock.json:1130:      },
+package-lock.json:1131:      "funding": {
+package-lock.json:1132:        "url": "https://github.com/sponsors/ljharb"
+package-lock.json:1133:      }
+package-lock.json:1134:    },
+package-lock.json:1135:    "node_modules/simple-concat": {
+package-lock.json:1136:      "version": "1.0.1",
+package-lock.json:1137:      "resolved": "https://registry.npmjs.org/simple-concat/-/simple-concat-1.0.1.tgz",
+package-lock.json:1138:      "integrity": "sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==",
+package-lock.json:1139:      "funding": [
+package-lock.json:1140:        {
+package-lock.json:1141:          "type": "github",
+package-lock.json:1142:          "url": "https://github.com/sponsors/feross"
+package-lock.json:1143:        },
+package-lock.json:1144:        {
+package-lock.json:1145:          "type": "patreon",
+package-lock.json:1146:          "url": "https://www.patreon.com/feross"
+package-lock.json:1147:        },
+package-lock.json:1148:        {
+package-lock.json:1149:          "type": "consulting",
+package-lock.json:1150:          "url": "https://feross.org/support"
+package-lock.json:1151:        }
+package-lock.json:1152:      ],
+package-lock.json:1153:      "license": "MIT"
+package-lock.json:1154:    },
+package-lock.json:1155:    "node_modules/simple-get": {
+package-lock.json:1156:      "version": "4.0.1",
+package-lock.json:1157:      "resolved": "https://registry.npmjs.org/simple-get/-/simple-get-4.0.1.tgz",
+package-lock.json:1158:      "integrity": "sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==",
+package-lock.json:1159:      "funding": [
+package-lock.json:1160:        {
+package-lock.json:1161:          "type": "github",
+package-lock.json:1162:          "url": "https://github.com/sponsors/feross"
+package-lock.json:1163:        },
+package-lock.json:1164:        {
+package-lock.json:1165:          "type": "patreon",
+package-lock.json:1166:          "url": "https://www.patreon.com/feross"
+package-lock.json:1167:        },
+package-lock.json:1168:        {
+package-lock.json:1169:          "type": "consulting",
+package-lock.json:1170:          "url": "https://feross.org/support"
+package-lock.json:1171:        }
+package-lock.json:1172:      ],
+package-lock.json:1173:      "license": "MIT",
+package-lock.json:1174:      "dependencies": {
+package-lock.json:1175:        "decompress-response": "^6.0.0",
+package-lock.json:1176:        "once": "^1.3.1",
+package-lock.json:1177:        "simple-concat": "^1.0.0"
+package-lock.json:1178:      }
+package-lock.json:1179:    },
+package-lock.json:1180:    "node_modules/statuses": {
+package-lock.json:1181:      "version": "2.0.2",
+package-lock.json:1182:      "resolved": "https://registry.npmjs.org/statuses/-/statuses-2.0.2.tgz",
+package-lock.json:1183:      "integrity": "sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==",
+package-lock.json:1184:      "license": "MIT",
+package-lock.json:1185:      "engines": {
+package-lock.json:1186:        "node": ">= 0.8"
+package-lock.json:1187:      }
+package-lock.json:1188:    },
+package-lock.json:1189:    "node_modules/string_decoder": {
+package-lock.json:1190:      "version": "1.3.0",
+package-lock.json:1191:      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz",
+package-lock.json:1192:      "integrity": "sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==",
+package-lock.json:1193:      "license": "MIT",
+package-lock.json:1194:      "dependencies": {
+package-lock.json:1195:        "safe-buffer": "~5.2.0"
+package-lock.json:1196:      }
+package-lock.json:1197:    },
+package-lock.json:1198:    "node_modules/strip-json-comments": {
+package-lock.json:1199:      "version": "2.0.1",
+package-lock.json:1200:      "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz",
+package-lock.json:1201:      "integrity": "sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==",
+package-lock.json:1202:      "license": "MIT",
+package-lock.json:1203:      "engines": {
+package-lock.json:1204:        "node": ">=0.10.0"
+package-lock.json:1205:      }
+package-lock.json:1206:    },
+package-lock.json:1207:    "node_modules/tar-fs": {
+package-lock.json:1208:      "version": "2.1.5",
+package-lock.json:1209:      "resolved": "https://registry.npmjs.org/tar-fs/-/tar-fs-2.1.5.tgz",
+package-lock.json:1210:      "integrity": "sha512-OboTd8mmMhZDNPV+UjQcK9yKAatXu2aJ+r1w4im1Otd4M4fl2hwvdoXUxIYHFTHWK/3y3FarBP70v3vwmGlOxw==",
+package-lock.json:1211:      "license": "MIT",
+package-lock.json:1212:      "dependencies": {
+package-lock.json:1213:        "chownr": "^1.1.1",
+package-lock.json:1214:        "mkdirp-classic": "^0.5.2",
+package-lock.json:1215:        "pump": "^3.0.0",
+package-lock.json:1216:        "tar-stream": "^2.1.4"
+package-lock.json:1217:      }
+package-lock.json:1218:    },
+package-lock.json:1219:    "node_modules/tar-stream": {
+package-lock.json:1220:      "version": "2.2.0",
+package-lock.json:1221:      "resolved": "https://registry.npmjs.org/tar-stream/-/tar-stream-2.2.0.tgz",
+package-lock.json:1222:      "integrity": "sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==",
+package-lock.json:1223:      "license": "MIT",
+package-lock.json:1224:      "dependencies": {
+package-lock.json:1225:        "bl": "^4.0.3",
+package-lock.json:1226:        "end-of-stream": "^1.4.1",
+package-lock.json:1227:        "fs-constants": "^1.0.0",
+package-lock.json:1228:        "inherits": "^2.0.3",
+package-lock.json:1229:        "readable-stream": "^3.1.1"
+package-lock.json:1230:      },
+package-lock.json:1231:      "engines": {
+package-lock.json:1232:        "node": ">=6"
+package-lock.json:1233:      }
+package-lock.json:1234:    },
+package-lock.json:1235:    "node_modules/toidentifier": {
+package-lock.json:1236:      "version": "1.0.1",
+package-lock.json:1237:      "resolved": "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz",
+package-lock.json:1238:      "integrity": "sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==",
+package-lock.json:1239:      "license": "MIT",
+package-lock.json:1240:      "engines": {
+package-lock.json:1241:        "node": ">=0.6"
+package-lock.json:1242:      }
+package-lock.json:1243:    },
+package-lock.json:1244:    "node_modules/tunnel-agent": {
+package-lock.json:1245:      "version": "0.6.0",
+package-lock.json:1246:      "resolved": "https://registry.npmjs.org/tunnel-agent/-/tunnel-agent-0.6.0.tgz",
+package-lock.json:1247:      "integrity": "sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==",
+package-lock.json:1248:      "license": "Apache-2.0",
+package-lock.json:1249:      "dependencies": {
+package-lock.json:1250:        "safe-buffer": "^5.0.1"
+package-lock.json:1251:      },
+package-lock.json:1252:      "engines": {
+package-lock.json:1253:        "node": "*"
+package-lock.json:1254:      }
+package-lock.json:1255:    },
+package-lock.json:1256:    "node_modules/type-is": {
+package-lock.json:1257:      "version": "2.1.0",
+package-lock.json:1258:      "resolved": "https://registry.npmjs.org/type-is/-/type-is-2.1.0.tgz",
+package-lock.json:1259:      "integrity": "sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==",
+package-lock.json:1260:      "license": "MIT",
+package-lock.json:1261:      "dependencies": {
+package-lock.json:1262:        "content-type": "^2.0.0",
+package-lock.json:1263:        "media-typer": "^1.1.0",
+package-lock.json:1264:        "mime-types": "^3.0.0"
+package-lock.json:1265:      },
+package-lock.json:1266:      "engines": {
+package-lock.json:1267:        "node": ">= 18"
+package-lock.json:1268:      },
+package-lock.json:1269:      "funding": {
+package-lock.json:1270:        "type": "opencollective",
+package-lock.json:1271:        "url": "https://opencollective.com/express"
+package-lock.json:1272:      }
+package-lock.json:1273:    },
+package-lock.json:1274:    "node_modules/type-is/node_modules/content-type": {
+package-lock.json:1275:      "version": "2.1.0",
+package-lock.json:1276:      "resolved": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz",
+package-lock.json:1277:      "integrity": "sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==",
+package-lock.json:1278:      "license": "MIT",
+package-lock.json:1279:      "engines": {
+package-lock.json:1280:        "node": ">=18"
+package-lock.json:1281:      },
+package-lock.json:1282:      "funding": {
+package-lock.json:1283:        "type": "opencollective",
+package-lock.json:1284:        "url": "https://opencollective.com/express"
+package-lock.json:1285:      }
+package-lock.json:1286:    },
+package-lock.json:1287:    "node_modules/unpipe": {
+package-lock.json:1288:      "version": "1.0.0",
+package-lock.json:1289:      "resolved": "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz",
+package-lock.json:1290:      "integrity": "sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==",
+package-lock.json:1291:      "license": "MIT",
+package-lock.json:1292:      "engines": {
+package-lock.json:1293:        "node": ">= 0.8"
+package-lock.json:1294:      }
+package-lock.json:1295:    },
+package-lock.json:1296:    "node_modules/util-deprecate": {
+package-lock.json:1297:      "version": "1.0.2",
+package-lock.json:1298:      "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
+package-lock.json:1299:      "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==",
+package-lock.json:1300:      "license": "MIT"
+package-lock.json:1301:    },
+package-lock.json:1302:    "node_modules/vary": {
+package-lock.json:1303:      "version": "1.1.2",
+package-lock.json:1304:      "resolved": "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz",
+package-lock.json:1305:      "integrity": "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==",
+package-lock.json:1306:      "license": "MIT",
+package-lock.json:1307:      "engines": {
+package-lock.json:1308:        "node": ">= 0.8"
+package-lock.json:1309:      }
+package-lock.json:1310:    },
+package-lock.json:1311:    "node_modules/wrappy": {
+package-lock.json:1312:      "version": "1.0.2",
+package-lock.json:1313:      "resolved": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz",
+package-lock.json:1314:      "integrity": "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==",
+package-lock.json:1315:      "license": "ISC"
+package-lock.json:1316:    }
+package-lock.json:1317:  }
+package-lock.json:1318:}
+public/index.html:1:<!DOCTYPE html>
+public/index.html:2:<html lang="fr">
+public/index.html:3:<head>
+public/index.html:4:    <meta charset="UTF-8">
+public/index.html:5:    <title>TP3 - TODO SQLite</title>
+public/index.html:6:    <script src="app.js" defer></script>
+public/index.html:7:</head>
+public/index.html:8:<body>
+public/index.html:9:    <main>
+public/index.html:10:        <h1>TODOs</h1>
+public/index.html:11:
+public/index.html:12:        <form id="new-todo">
+public/index.html:13:            <input name="title" placeholder="Nouvelle tâche" required>
+public/index.html:14:            <select name="priority">
+public/index.html:15:                <option>URGENTE</option>
+public/index.html:16:                <option selected>NORMALE</option>
+public/index.html:17:                <option>FAIBLE</option>
+public/index.html:18:            </select>
+public/index.html:19:            <button type="submit">Ajouter</button>
+public/index.html:20:        </form>
+public/index.html:21:
+public/index.html:22:        <table>
+public/index.html:23:            <thead>
+public/index.html:24:                <tr>
+public/index.html:25:                    <th>Titre</th>
+public/index.html:26:                    <th>Priorité</th>
+public/index.html:27:                    <th>Créée</th>
+public/index.html:28:                    <th>Action</th>
+public/index.html:29:                </tr>
+public/index.html:30:            </thead>
+public/index.html:31:            <tbody id="rows"></tbody>
+public/index.html:32:        </table>
+public/index.html:33:    </main>
+public/index.html:34:</body>
+public/index.html:35:</html>
+public/index.css:1::root {
+public/index.css:2:    --bg: #0f172a; /* slate-900 */
+public/index.css:3:    --card: #111827; /* gray-900 */
+public/index.css:4:    --text: #e5e7eb; /* gray-200 */
+public/index.css:5:    --accent: #f59e0b; /* amber-500 */
+public/index.css:6:}
+public/index.css:7:* { box-sizing: border-box; }
+public/index.css:8:body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
+public/index.css:9:main { min-height: 100dvh; display: grid; place-items: center; padding: 2rem; }
+public/index.css:10:.card { width: min(90vw, 420px); background: var(--card); border-radius: 16px; padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,.3); text-align: center; }
+public/index.css:11:.avatar { width: 120px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1rem; }
+public/index.css:12:.like-btn, .reset-btn { font: inherit; padding: .7rem 1.1rem; border-radius: 999px; border: none; cursor: pointer; }
+public/index.css:13:.like-btn:focus-visible, .reset-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+public/index.js:1://on récupère l'élément main
+public/index.js:2:const main = document.querySelector('main');
+public/index.js:3:
+public/index.js:4:// chargement des utilisateurs
+public/index.js:5:async function load() {
+public/index.js:6:    // Appel du serveur
+public/index.js:7:    fetch("/api/users")
+public/index.js:8:        .then((res) => {
+public/index.js:9:            if (res.status === 200)
+public/index.js:10:                return res.json()
+public/index.js:11:            console.log(res);
+public/index.js:12:        })
+public/index.js:13:        .then((users) => {
+public/index.js:14:            // reinitialisation de notre zone d'affichage
+public/index.js:15:            main.innerHTML = "";
+public/index.js:16:            // Pour chaque utilisateur on construit un element article
+public/index.js:17:            // et on l'ajoute dans notre balise main
+public/index.js:18:            users.forEach((user) => {
+public/index.js:19:                creatChild(user);
+public/index.js:20:            })
+public/index.js:21:        })
+public/index.js:22:
+public/index.js:23:
+public/index.js:24:}
+public/index.js:25:
+public/index.js:26:load();
+public/index.js:27:
+public/index.js:28:async function incremenrLike(id) {
+public/index.js:29:    return await fetch("/api/users/like/add/" + id, {method: "POST"})
+public/index.js:30:        .then((res) => {
+public/index.js:31:            if (res.status !== 200)
+public/index.js:32:                alert("Problème lors de la mise à jour d'un utilisateur");
+public/index.js:33:        });
+public/index.js:34:}
+public/index.js:35:
+public/index.js:36:function creatChild(user) {
+public/index.js:37:    // on créé un élément article
+public/index.js:38:    let htmlElement = document.createElement("article");
+public/index.js:39:    // on lui ajoute la class "card"
+public/index.js:40:    htmlElement.classList = "card";
+public/index.js:41:
+public/index.js:42:    let img = document.createElement("img");
+public/index.js:43:    img.classList = "avatar";
+public/index.js:44:    img.setAttribute("src", user.url);
+public/index.js:45:    img.setAttribute("alt", "Avatar de l’utilisateur");
+public/index.js:46:    htmlElement.append(img);
+public/index.js:47:
+public/index.js:48:    // on créé un élément h2
+public/index.js:49:    let h2Name = document.createElement("h2");
+public/index.js:50:    // on y insére le nom de l'utilisateur
+public/index.js:51:    h2Name.textContent = user.name;
+public/index.js:52:    htmlElement.append(h2Name);
+public/index.js:53:
+public/index.js:54:    // on créé un élément h2
+public/index.js:55:    let pLike = document.createElement("p");
+public/index.js:56:    pLike.classList = "likes";
+public/index.js:57:
+public/index.js:58:    let spanCounter = document.createElement("span");
+public/index.js:59:    spanCounter.classList = "count";
+public/index.js:60:    spanCounter.textContent = user.like || "0";
+public/index.js:61:
+public/index.js:62:    pLike.append("❤️ ");
+public/index.js:63:    pLike.append(spanCounter);
+public/index.js:64:    htmlElement.append(pLike);
+public/index.js:65:
+public/index.js:66:    // on créé un bouton like
+public/index.js:67:    let likeButton = document.createElement("button");
+public/index.js:68:    likeButton.classList = "like-btn";
+public/index.js:69:    likeButton.setAttribute("type", "button");
+public/index.js:70:    likeButton.setAttribute("aria-pressed", "false");
+public/index.js:71:    likeButton.textContent = "LIKE"
+public/index.js:72:
+public/index.js:73:    // on lui ajoute un handler permettant de gérer le click utilisateur
+public/index.js:74:    likeButton.addEventListener('click', async () => {
+public/index.js:75:        likeButton.setAttribute("aria-pressed", "true");
+public/index.js:76:        await incremenrLike(user.id);
+public/index.js:77:        await load();
+public/index.js:78:        likeButton.setAttribute("aria-pressed", "false");
+public/index.js:79:    });
+public/index.js:80:
+public/index.js:81:    htmlElement.append(likeButton);
+public/index.js:82:    main.append(htmlElement)
+public/index.js:83:
+public/index.js:84:}
+public/index.js:85:
+public/index.js:86:
+public/index.js:87:
+public/index.js:88:
+public/index.js:89:
+public/index.js:90:
+public/index.js:91:
+public/index.js:92:
+public/index.js:93:
+public/index.js:94:
+public/index.js:95:
+public/index.js:96:
+public/index.js:97:
+public/index.js:98:
+public/index.js:99:
+public/index.js:100:
+public/index.js:101:
+public/index.js:102:
+public/index.js:103:
+public/index.js:104:
+public/app.js:1:const API = '/api/v1/todos';
+public/app.js:2:const rows = document.querySelector('#rows');
+public/app.js:3:const form = document.querySelector('#new-todo');
+public/app.js:4:
+public/app.js:5:async function load() {
+public/app.js:6:    const res = await fetch(API);
+public/app.js:7:    const data = await res.json();
+public/app.js:8:
+public/app.js:9:    rows.innerHTML = '';
+public/app.js:10:
+public/app.js:11:    data.forEach(todo => {
+public/app.js:12:        const tr = document.createElement('tr');
+public/app.js:13:
+public/app.js:14:        for (const value of [
+public/app.js:15:            todo.title,
+public/app.js:16:            todo.priority,
+public/app.js:17:            new Date(todo.createdAt).toLocaleString()
+public/app.js:18:        ]) {
+public/app.js:19:            const td = document.createElement('td');
+public/app.js:20:            td.textContent = value;
+public/app.js:21:            tr.append(td);
+public/app.js:22:        }
+public/app.js:23:
+public/app.js:24:        const td = document.createElement('td');
+public/app.js:25:        const button = document.createElement('button');
+public/app.js:26:        button.textContent = 'Supprimer';
+public/app.js:27:        button.className = 'del';
+public/app.js:28:        button.dataset.id = todo.id;
+public/app.js:29:        td.append(button);
+public/app.js:30:        tr.append(td);
+public/app.js:31:
+public/app.js:32:        rows.append(tr);
+public/app.js:33:    });
+public/app.js:34:}
+public/app.js:35:
+public/app.js:36:form.addEventListener('submit', async (e) => {
+public/app.js:37:    e.preventDefault();
+public/app.js:38:
+public/app.js:39:    const fd = new FormData(form);
+public/app.js:40:
+public/app.js:41:    const res = await fetch(API, {
+public/app.js:42:        method: 'POST',
+public/app.js:43:        headers: {'Content-Type': 'application/json'},
+public/app.js:44:        body: JSON.stringify({
+public/app.js:45:            title: fd.get('title'),
+public/app.js:46:            priority: fd.get('priority')
+public/app.js:47:        })
+public/app.js:48:    });
+public/app.js:49:
+public/app.js:50:    if (!res.ok) {
+public/app.js:51:        alert('Erreur');
+public/app.js:52:        return;
+public/app.js:53:    }
+public/app.js:54:
+public/app.js:55:    form.reset();
+public/app.js:56:    await load();
+public/app.js:57:});
+public/app.js:58:
+public/app.js:59:rows.addEventListener('click', async (e) => {
+public/app.js:60:    if (e.target.classList.contains('del')) {
+public/app.js:61:        const id = e.target.dataset.id;
+public/app.js:62:
+public/app.js:63:        const res = await fetch(`${API}/${id}`, {
+public/app.js:64:            method: 'DELETE'
+public/app.js:65:        });
+public/app.js:66:
+public/app.js:67:        if (res.status === 204) await load();
+public/app.js:68:    }
+public/app.js:69:});
+public/app.js:70:
+public/app.js:71:load();
+package.json:1:{
+package.json:2:  "dependencies": {
+package.json:3:    "better-sqlite3": "^12.11.1",
+package.json:4:    "express": "^5.2.1"
+package.json:5:  },
+package.json:6:  "type": "module",
+package.json:7:  "scripts": {
+package.json:8:    "start": "node server.js",
+package.json:9:    "dev": "node --watch server.js"
+package.json:10:  }
+package.json:11:}

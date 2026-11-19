@@ -1,0 +1,228 @@
+AAW-2026-TP2/AAW-2026 copie/db/db.js:1:// librairie permettant de générer un uuid (identifiant totalement aléatoire)
+AAW-2026-TP2/AAW-2026 copie/db/db.js:2:const { randomUUID } = require('crypto');
+AAW-2026-TP2/AAW-2026 copie/db/db.js:3:
+AAW-2026-TP2/AAW-2026 copie/db/db.js:4:const users = [
+AAW-2026-TP2/AAW-2026 copie/db/db.js:5:    {
+AAW-2026-TP2/AAW-2026 copie/db/db.js:6:        id: randomUUID(),
+AAW-2026-TP2/AAW-2026 copie/db/db.js:7:        name: "tdtxdqtsx",
+AAW-2026-TP2/AAW-2026 copie/db/db.js:8:        url:"https://i.pravatar.cc/160?u="+randomUUID()
+AAW-2026-TP2/AAW-2026 copie/db/db.js:9:    },
+AAW-2026-TP2/AAW-2026 copie/db/db.js:10:    {
+AAW-2026-TP2/AAW-2026 copie/db/db.js:11:        id: randomUUID(),
+AAW-2026-TP2/AAW-2026 copie/db/db.js:12:        name: "tdtxdsx",
+AAW-2026-TP2/AAW-2026 copie/db/db.js:13:        url:"https://i.pravatar.cc/160?u="+randomUUID()
+AAW-2026-TP2/AAW-2026 copie/db/db.js:14:    }
+AAW-2026-TP2/AAW-2026 copie/db/db.js:15:]
+AAW-2026-TP2/AAW-2026 copie/db/db.js:16:
+AAW-2026-TP2/AAW-2026 copie/db/db.js:17:module.exports = users;
+AAW-2026-TP2/AAW-2026 copie/db/db.js:18:
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:1:const express = require("express");
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:2:const router = express.Router();
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:3:const users = require("../db/db");
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:4:
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:5://API permettant de récupérer la liste des utilisateurs
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:6:router.get("/users", (req, res) => {
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:7:    res.json(users);
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:8:})
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:9:
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:10://Route permettant d'ajouter un like à un utilisateur
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:11:// l'écriture :id induit l'existance d'un pathParam
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:12:// ainsi lorsque le client nous appellera avec une url du type
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:13:// /api/users/like/add/XXXXXXX
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:14:// alors XXXXXX sera considéré comme le parametre id et sera donc récupérable
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:15:// via req.params.id
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:16:router.post("/users/like/add/:id", (req, res) => {
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:17:    const id = req.params.id;
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:18:    //recherche de l'utilisateur dans notre liste
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:19:    let userToUpdate = users.find((user) => user.id === id);
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:20:    if (userToUpdate) {
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:21:        // MAJ du nombre de like, si celui ci existe alors on l'incremente,
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:22:        // sinon on le passe à 1
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:23:        userToUpdate.like = userToUpdate.like ? userToUpdate.like + 1 : 1;
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:24:
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:25:        // on renvoie la liste des utilisateurs
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:26:        // le statut sera à 200 par défaut
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:27:        res.json(users);
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:28:    }else{
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:29:        res.status(404).send("L'utilisateur demandé n'existe pas")
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:30:    }
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:31:})
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:32:
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:33:
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:34:module.exports = router;
+AAW-2026-TP2/AAW-2026 copie/route/userRouter.js:35:
+AAW-2026-TP2/AAW-2026 copie/server.js:1:const express = require("express");
+AAW-2026-TP2/AAW-2026 copie/server.js:2:
+AAW-2026-TP2/AAW-2026 copie/server.js:3:const app = express();
+AAW-2026-TP2/AAW-2026 copie/server.js:4:app.use(express.static("./public"));
+AAW-2026-TP2/AAW-2026 copie/server.js:5:app.use(express.json());
+AAW-2026-TP2/AAW-2026 copie/server.js:6:
+AAW-2026-TP2/AAW-2026 copie/server.js:7:const userRouter = require("./route/userRouter");
+AAW-2026-TP2/AAW-2026 copie/server.js:8:
+AAW-2026-TP2/AAW-2026 copie/server.js:9:// utilisation du userRouter sur le path /api
+AAW-2026-TP2/AAW-2026 copie/server.js:10:// il y aura donc une concaténation entre les routes définies dans
+AAW-2026-TP2/AAW-2026 copie/server.js:11:// userRouter et "/api"
+AAW-2026-TP2/AAW-2026 copie/server.js:12:// ex : "/api/users"
+AAW-2026-TP2/AAW-2026 copie/server.js:13:app.use("/api", userRouter);
+AAW-2026-TP2/AAW-2026 copie/server.js:14:
+AAW-2026-TP2/AAW-2026 copie/server.js:15://Démarrage du serveur sur le port 3000
+AAW-2026-TP2/AAW-2026 copie/server.js:16:app.listen(3000, () => {
+AAW-2026-TP2/AAW-2026 copie/server.js:17:    console.log("serveur démarré");
+AAW-2026-TP2/AAW-2026 copie/server.js:18:})
+AAW-2026-TP2/AAW-2026 copie/public/index.html:1:<!doctype html>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:2:<html lang="fr">
+AAW-2026-TP2/AAW-2026 copie/public/index.html:3:<head>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:4:  <meta charset="utf-8" />
+AAW-2026-TP2/AAW-2026 copie/public/index.html:5:  <meta name="viewport" content="width=device-width, initial-scale=1" />
+AAW-2026-TP2/AAW-2026 copie/public/index.html:6:  <title>TP – Carte utilisateur</title>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:7:  <link rel="stylesheet" href="index.css" />
+AAW-2026-TP2/AAW-2026 copie/public/index.html:8:</head>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:9:<body>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:10:<script src="index.js" defer></script>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:11:
+AAW-2026-TP2/AAW-2026 copie/public/index.html:12:<main id="app">
+AAW-2026-TP2/AAW-2026 copie/public/index.html:13:  <!--<article class="card" aria-live="polite">
+AAW-2026-TP2/AAW-2026 copie/public/index.html:14:    <img class="avatar" src="https://i.pravatar.cc/160?img=12" alt="Avatar de l’utilisateur" />
+AAW-2026-TP2/AAW-2026 copie/public/index.html:15:    <h2 class="name">Jane Doe</h2>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:16:    <p class="likes">❤️ <span class="count">0</span></p>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:17:    <button class="like-btn" type="button" aria-pressed="false">Like</button>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:18:    <button class="reset-btn" type="button" aria-pressed="false">Reset</button>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:19:  </article>-->
+AAW-2026-TP2/AAW-2026 copie/public/index.html:20:
+AAW-2026-TP2/AAW-2026 copie/public/index.html:21:</main>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:22:</body>
+AAW-2026-TP2/AAW-2026 copie/public/index.html:23:</html>
+AAW-2026-TP2/AAW-2026 copie/public/index.css:1::root {
+AAW-2026-TP2/AAW-2026 copie/public/index.css:2:    --bg: #0f172a; /* slate-900 */
+AAW-2026-TP2/AAW-2026 copie/public/index.css:3:    --card: #111827; /* gray-900 */
+AAW-2026-TP2/AAW-2026 copie/public/index.css:4:    --text: #e5e7eb; /* gray-200 */
+AAW-2026-TP2/AAW-2026 copie/public/index.css:5:    --accent: #f59e0b; /* amber-500 */
+AAW-2026-TP2/AAW-2026 copie/public/index.css:6:}
+AAW-2026-TP2/AAW-2026 copie/public/index.css:7:* { box-sizing: border-box; }
+AAW-2026-TP2/AAW-2026 copie/public/index.css:8:body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
+AAW-2026-TP2/AAW-2026 copie/public/index.css:9:main { min-height: 100dvh; display: grid; place-items: center; padding: 2rem; }
+AAW-2026-TP2/AAW-2026 copie/public/index.css:10:.card { width: min(90vw, 420px); background: var(--card); border-radius: 16px; padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,.3); text-align: center; }
+AAW-2026-TP2/AAW-2026 copie/public/index.css:11:.avatar { width: 120px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1rem; }
+AAW-2026-TP2/AAW-2026 copie/public/index.css:12:.like-btn, .reset-btn { font: inherit; padding: .7rem 1.1rem; border-radius: 999px; border: none; cursor: pointer; }
+AAW-2026-TP2/AAW-2026 copie/public/index.css:13:.like-btn:focus-visible, .reset-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+AAW-2026-TP2/AAW-2026 copie/public/index.js:1://on récupère l'élément main
+AAW-2026-TP2/AAW-2026 copie/public/index.js:2:const main = document.querySelector('main');
+AAW-2026-TP2/AAW-2026 copie/public/index.js:3:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:4:// chargement des utilisateurs
+AAW-2026-TP2/AAW-2026 copie/public/index.js:5:async function load() {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:6:    // Appel du serveur
+AAW-2026-TP2/AAW-2026 copie/public/index.js:7:    fetch("/api/users")
+AAW-2026-TP2/AAW-2026 copie/public/index.js:8:        .then((res) => {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:9:            if (res.status === 200)
+AAW-2026-TP2/AAW-2026 copie/public/index.js:10:                return res.json()
+AAW-2026-TP2/AAW-2026 copie/public/index.js:11:            console.log(res);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:12:        })
+AAW-2026-TP2/AAW-2026 copie/public/index.js:13:        .then((users) => {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:14:            // reinitialisation de notre zone d'affichage
+AAW-2026-TP2/AAW-2026 copie/public/index.js:15:            main.innerHTML = "";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:16:            // Pour chaque utilisateur on construit un element article
+AAW-2026-TP2/AAW-2026 copie/public/index.js:17:            // et on l'ajoute dans notre balise main
+AAW-2026-TP2/AAW-2026 copie/public/index.js:18:            users.forEach((user) => {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:19:                creatChild(user);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:20:            })
+AAW-2026-TP2/AAW-2026 copie/public/index.js:21:        })
+AAW-2026-TP2/AAW-2026 copie/public/index.js:22:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:23:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:24:}
+AAW-2026-TP2/AAW-2026 copie/public/index.js:25:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:26:load();
+AAW-2026-TP2/AAW-2026 copie/public/index.js:27:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:28:async function incremenrLike(id) {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:29:    return await fetch("/api/users/like/add/" + id, {method: "POST"})
+AAW-2026-TP2/AAW-2026 copie/public/index.js:30:        .then((res) => {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:31:            if (res.status !== 200)
+AAW-2026-TP2/AAW-2026 copie/public/index.js:32:                alert("Problème lors de la mise à jour d'un utilisateur");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:33:        });
+AAW-2026-TP2/AAW-2026 copie/public/index.js:34:}
+AAW-2026-TP2/AAW-2026 copie/public/index.js:35:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:36:function creatChild(user) {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:37:    // on créé un élément article
+AAW-2026-TP2/AAW-2026 copie/public/index.js:38:    let htmlElement = document.createElement("article");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:39:    // on lui ajoute la class "card"
+AAW-2026-TP2/AAW-2026 copie/public/index.js:40:    htmlElement.classList = "card";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:41:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:42:    let img = document.createElement("img");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:43:    img.classList = "avatar";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:44:    img.setAttribute("src", user.url);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:45:    img.setAttribute("alt", "Avatar de l’utilisateur");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:46:    htmlElement.append(img);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:47:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:48:    // on créé un élément h2
+AAW-2026-TP2/AAW-2026 copie/public/index.js:49:    let h2Name = document.createElement("h2");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:50:    // on y insére le nom de l'utilisateur
+AAW-2026-TP2/AAW-2026 copie/public/index.js:51:    h2Name.textContent = user.name;
+AAW-2026-TP2/AAW-2026 copie/public/index.js:52:    htmlElement.append(h2Name);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:53:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:54:    // on créé un élément h2
+AAW-2026-TP2/AAW-2026 copie/public/index.js:55:    let pLike = document.createElement("p");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:56:    pLike.classList = "likes";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:57:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:58:    let spanCounter = document.createElement("span");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:59:    spanCounter.classList = "count";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:60:    spanCounter.textContent = user.like || "0";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:61:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:62:    pLike.append("❤️ ");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:63:    pLike.append(spanCounter);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:64:    htmlElement.append(pLike);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:65:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:66:    // on créé un bouton like
+AAW-2026-TP2/AAW-2026 copie/public/index.js:67:    let likeButton = document.createElement("button");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:68:    likeButton.classList = "like-btn";
+AAW-2026-TP2/AAW-2026 copie/public/index.js:69:    likeButton.setAttribute("type", "button");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:70:    likeButton.setAttribute("aria-pressed", "false");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:71:    likeButton.textContent = "LIKE"
+AAW-2026-TP2/AAW-2026 copie/public/index.js:72:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:73:    // on lui ajoute un handler permettant de gérer le click utilisateur
+AAW-2026-TP2/AAW-2026 copie/public/index.js:74:    likeButton.addEventListener('click', async () => {
+AAW-2026-TP2/AAW-2026 copie/public/index.js:75:        likeButton.setAttribute("aria-pressed", "true");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:76:        await incremenrLike(user.id);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:77:        await load();
+AAW-2026-TP2/AAW-2026 copie/public/index.js:78:        likeButton.setAttribute("aria-pressed", "false");
+AAW-2026-TP2/AAW-2026 copie/public/index.js:79:    });
+AAW-2026-TP2/AAW-2026 copie/public/index.js:80:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:81:    htmlElement.append(likeButton);
+AAW-2026-TP2/AAW-2026 copie/public/index.js:82:    main.append(htmlElement)
+AAW-2026-TP2/AAW-2026 copie/public/index.js:83:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:84:}
+AAW-2026-TP2/AAW-2026 copie/public/index.js:85:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:86:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:87:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:88:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:89:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:90:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:91:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:92:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:93:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:94:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:95:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:96:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:97:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:98:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:99:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:100:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:101:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:102:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:103:
+AAW-2026-TP2/AAW-2026 copie/public/index.js:104:
+AAW-2026-TP2/AAW-2026 copie/package.json:1:{
+AAW-2026-TP2/AAW-2026 copie/package.json:2:  "name": "aaw-2026",
+AAW-2026-TP2/AAW-2026 copie/package.json:3:  "version": "1.0.0",
+AAW-2026-TP2/AAW-2026 copie/package.json:4:  "description": "",
+AAW-2026-TP2/AAW-2026 copie/package.json:5:  "main": "public/index.js",
+AAW-2026-TP2/AAW-2026 copie/package.json:6:  "module":"",
+AAW-2026-TP2/AAW-2026 copie/package.json:7:  "scripts": {
+AAW-2026-TP2/AAW-2026 copie/package.json:8:    "test": "echo \"Error: no test specified\" && exit 1",
+AAW-2026-TP2/AAW-2026 copie/package.json:9:    "dev": "nodemon server.js"
+AAW-2026-TP2/AAW-2026 copie/package.json:10:  },
+AAW-2026-TP2/AAW-2026 copie/package.json:11:  "author": "",
+AAW-2026-TP2/AAW-2026 copie/package.json:12:  "license": "ISC",
+AAW-2026-TP2/AAW-2026 copie/package.json:13:  "dependencies": {
+AAW-2026-TP2/AAW-2026 copie/package.json:14:    "express": "^5.2.1",
+AAW-2026-TP2/AAW-2026 copie/package.json:15:    "nodemon": "^3.1.14"
+AAW-2026-TP2/AAW-2026 copie/package.json:16:  }
+AAW-2026-TP2/AAW-2026 copie/package.json:17:}
