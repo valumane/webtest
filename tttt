@@ -1,0 +1,76 @@
+
+import { useEffect, useState } from "react";
+
+const GENRES = ["roman", "science-fiction", "policier", "essai"];
+
+export default function App() {
+    // TODO : états (liste, filtre, livre sélectionné, champs du formulaire, erreurs)
+    // Pour l'ajout, on garde seulement le message en état.
+    // FormData lira les champs au moment de la soumission.
+    const [message, setMessage] = useState("");
+
+    // TODO : fonction qui recharge la liste (GET /api/livres, avec ?genre= si un filtre est choisi)
+
+    useEffect(() => {
+        // TODO : charger la liste au démarrage et quand le filtre change
+    }, []);
+
+    // TODO : fonctions pour ajouter, changer l'état de lecture, supprimer, afficher le détail
+    async function ajouterLivre(event) {
+        // On évite le rechargement de la page et on lit les champs par leur name.
+        event.preventDefault();
+        const formulaire = event.currentTarget;
+        const livre = Object.fromEntries(new FormData(formulaire));
+
+        // Le champ année fournit du texte. L'API attend un nombre.
+        livre.annee = Number(livre.annee);
+
+        try {
+            // On envoie le livre à Express au format JSON.
+            const reponse = await fetch("/api/livres", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(livre)
+            });
+
+            // En cas de refus, on affiche les erreurs et on garde les champs.
+            if (!reponse.ok) {
+                const { erreurs } = await reponse.json();
+                setMessage(erreurs?.join(" ") || `Erreur HTTP ${reponse.status}`);
+                return;
+            }
+
+            // Le serveur a accepté le livre. On vide le formulaire.
+            setMessage("Livre ajouté !");
+            formulaire.reset();
+        } catch {
+            setMessage("Impossible d’ajouter le livre. Vérifie le serveur.");
+        }
+    }
+
+    return (
+        <div style={{ padding: "2rem", maxWidth: 700 }}>
+            <h1>Bibliothèque</h1>
+
+            {/* TODO : formulaire, filtre, liste, encadré de détail */}
+            <form onSubmit={ajouterLivre}>
+                <label>Titre <input name="titre" required /></label>
+                <label>Auteur <input name="auteur" required /></label>
+
+                <label>
+                    Genre
+                    <select name="genre">
+                        {GENRES.map(genre => (
+                            <option key={genre} value={genre}>{genre}</option>
+                        ))}
+                    </select>
+                </label>
+
+                <label>Année <input name="annee" type="number" required /></label>
+                <button type="submit">Ajouter</button>
+            </form>
+
+            <p role="status">{message}</p>
+        </div>
+    );
+}
