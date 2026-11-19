@@ -1,0 +1,9 @@
+target/
+.idea/
+.vscode/
+*.iml
+# Ne pas commiter les données H2
+/data/*.db
+/data/*.mv.db
+/data/*.lock.db
+/data/*.trace.db

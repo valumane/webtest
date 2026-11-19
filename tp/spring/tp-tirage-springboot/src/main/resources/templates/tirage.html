@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mon tirage · Tirage au sort</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <main class="layout">
+    <section class="panel">
+      <div class="topline">
+        <p class="eyebrow">TP AAW · Tirage</p>
+        <form method="post" th:action="@{/logout}">
+          <button type="submit" class="secondary">Déconnexion</button>
+        </form>
+      </div>
+      <h1 th:text="'Groupe ' + ${groupe}">Groupe 1</h1>
+      <p class="muted" th:text="'Connecté avec : ' + ${username}">Connecté</p>
+
+      <div class="result-card" th:if="${tirage != null}">
+        <span class="eyebrow">Votre sujet</span>
+        <strong class="result-number" th:text="${tirage.sujet}">5</strong>
+        <p>Votre résultat est enregistré et ne changera pas.</p>
+      </div>
+
+      <div class="result-card" th:unless="${tirage != null}">
+        <span class="eyebrow">Votre sujet n'est pas encore attribué</span>
+        <p>Le tirage choisit aléatoirement un sujet encore disponible.</p>
+        <form method="post" th:action="@{/tirage}">
+          <button type="submit">Tirer mon sujet</button>
+        </form>
+      </div>
+
+      <p class="footnote" th:text="${restants} + ' sujet(s) encore disponible(s) sur 12.'">12 sujets restants</p>
+    </section>
+  </main>
+</body>
+</html>

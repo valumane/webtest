@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion · Tirage au sort</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <main class="layout">
+    <section class="panel login-panel">
+      <p class="eyebrow">TP AAW · Spring Boot</p>
+      <h1>Tirage au sort</h1>
+      <p class="muted">Connectez-vous pour découvrir le sujet attribué à votre groupe.</p>
+
+      <div class="notice error" th:if="${param.error}">Identifiant ou mot de passe incorrect.</div>
+      <div class="notice success" th:if="${param.logout}">Vous êtes déconnecté.</div>
+
+      <form method="post" th:action="@{/login}" class="stack">
+        <label for="username">Identifiant du groupe</label>
+        <input id="username" name="username" type="text" placeholder="groupe1" autocomplete="username" required autofocus>
+        <label for="password">Mot de passe</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Se connecter</button>
+      </form>
+      <p class="hint">Démo locale : <code>groupe1</code> / <code>demo123</code> (jusqu'à <code>groupe12</code>)</p>
+    </section>
+  </main>
+</body>
+</html>

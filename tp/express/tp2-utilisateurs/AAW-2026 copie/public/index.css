@@ -1,0 +1,13 @@
+:root {
+    --bg: #0f172a; /* slate-900 */
+    --card: #111827; /* gray-900 */
+    --text: #e5e7eb; /* gray-200 */
+    --accent: #f59e0b; /* amber-500 */
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
+main { min-height: 100dvh; display: grid; place-items: center; padding: 2rem; }
+.card { width: min(90vw, 420px); background: var(--card); border-radius: 16px; padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,.3); text-align: center; }
+.avatar { width: 120px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1rem; }
+.like-btn, .reset-btn { font: inherit; padding: .7rem 1.1rem; border-radius: 999px; border: none; cursor: pointer; }
+.like-btn:focus-visible, .reset-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }

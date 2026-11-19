@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP3 - TODO SQLite</title>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>TODOs</h1>
+
+        <form id="new-todo">
+            <input name="title" placeholder="Nouvelle tâche" required>
+            <select name="priority">
+                <option>URGENTE</option>
+                <option selected>NORMALE</option>
+                <option>FAIBLE</option>
+            </select>
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Priorité</th>
+                    <th>Créée</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+        </table>
+    </main>
+</body>
+</html>

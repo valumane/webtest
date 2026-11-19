@@ -1,0 +1,138 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --border: #e5e7eb;
+  --row-hover: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff 0%, #f4f6fb 50%, #fdf2f8 100%);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.app {
+  max-width: 90vw;
+  margin: 48px auto;
+  padding: 32px;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.12);
+  text-align: center;
+}
+
+.app h1 {
+  margin: 0 0 24px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ---------- Tableau ---------- */
+.app table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.app thead th {
+  padding: 14px 18px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app tbody td {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+}
+
+.app tbody tr.tirage {
+  transition: background 0.15s ease;
+}
+
+.app tbody tr.tirage:nth-child(even) {
+  background: #fafafa;
+}
+
+.app tbody tr.tirage:hover {
+  background: var(--row-hover);
+}
+
+/* Colonne groupe : petit badge */
+.app tbody td:first-child {
+  width: 400px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.app tbody td:first-child::before {
+  content: "G";
+  display: inline-block;
+  margin-right: 4px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ---------- Etat vide ---------- */
+.app > div {
+  margin-bottom: 28px;
+  padding: 32px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---------- Bouton ---------- */
+.app button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.app button:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.45);
+}
+
+.app button:active {
+  transform: scale(0.97);
+}
+
+.app button:focus-visible {
+  outline: 3px solid #c7d2fe;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .app {
+    margin: 16px;
+    padding: 20px;
+  }
+}
