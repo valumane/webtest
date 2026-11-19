@@ -1,0 +1,287 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 4898 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 109  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (1 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. Le bouton de Événements fait partie d’un formulaire. L’utilisateur valide avec) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (Entrée dans le champ. Quel événement écouter pour couvrir aussi le clic ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  submit sur le formulaire) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  change sur chaque caractère saisi) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  mouseover sur le bouton) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (02. Une page Événements publique a reçu Cache-Control: max-age=520. Quelle unité) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (s’applique à 520 ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  Secondes) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  Millisecondes) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  Nombre de requêtes) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (03. Un conteneur héberge la base de Événements. On veut ajouter des instances qui) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (accèdent à un même état durable. Quelle conception convient ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  Laisser chaque instance écrire sa copie locale sans synchronisation) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  Utiliser un stockage partagé compatible avec les accès concurrents) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  Sauvegarder l’état dans les props React) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (04. La fiche fiche-09 change, et useEffect charge la fiche selon son id. Quelle) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (dépendance doit être déclarée si l’effet utilise id ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  id) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  Aucune dans tous les cas) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  Le statut de l’ancienne réponse uniquement) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (05. Deux groupes peuvent obtenir le sujet 11 presque en même temps. Quel mécanisme doit) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 425 Tm (porter l’invariant « un seul groupe par sujet » ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (A.  Une validation CSS par groupe) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (B.  Un bouton uniquement grisé après le clic) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 389 Tm (C.  Une contrainte UNIQUE sur le sujet en base) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (06. Une entrée contient les caractères espace, 11, espace. Que renvoie) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 358 Tm (input.value.trim\(\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (A.  Une chaîne vide) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (B.  La chaîne "11") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 322 Tm (C.  Le nombre 11) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (07. Le composant fiche-09 possède les classes carte et actif. Quel sélecteur vise un) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 291 Tm (élément qui porte les deux à la fois ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (A.  .carte.actif) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (B.  actif.carte) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 255 Tm (C.  .carte .actif) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (08. Dans Événements, le texte de réponse attendu a été obtenu par response.json\(\). Que) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 224 Tm (renvoie immédiatement cet appel ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (A.  Un objet prêt à lire dans tous les cas) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (B.  Le code HTTP seul) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 188 Tm (C.  Une promesse du résultat du décodage) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 169 Tm (09. Le port de développement de Événements est 5209. Quelle URL fetch permet au proxy) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 157 Tm (Vite configuré sur /api de relayer l’appel ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 145 Tm (A.  /api/evenements) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 133 Tm (B.  file:///evenements.json) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 121 Tm (C.  http://localhost:5210/api/evenements) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 4179 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 109  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (2 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (10. Le serveur répond HTTP 400 après POST /api/evenements. Pourquoi le catch de fetch) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (seul peut-il ne rien afficher ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  Une réponse HTTP 400 peut résoudre la promesse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  Le navigateur transforme toujours 400 en 200) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  Le statut 400 change le type de fetch en CSS) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (11. SQLite comporte 31 fiches. Une requête LIMIT 11 OFFSET 18 s’exécute sur une liste) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (bien ordonnée. Que signifie OFFSET ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  Ajouter 18 lignes artificielles) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  Ne prendre que les 18 premières lignes) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  Ignorer les 18 premières lignes avant de prélever les résultats) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (12. Que renvoie [11, 18, 31].find\(x => x >= 18\) dans la page Événements ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 559 Tm (A.  31) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (B.  18) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (C.  Un tableau contenant toutes les valeurs admises) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 516 Tm (13. Une liste React de 31 lignes passe à 30 après un DELETE réussi. Quel état conserver) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 492 Tm (A.  Le corps JSON de la réponse 204) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (B.  Le même tableau de 31 lignes avec un titre vide) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (C.  Un nouveau tableau de 30 lignes) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 449 Tm (14. Dans Événements, le compteur vaut 0. Quel résultat donne compteur ?? 31 ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 437 Tm (A.  undefined) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (B.  31) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (C.  0) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 394 Tm (15. Pour /api/evenements, quelle valeur prévient Express que le corps du POST est du) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (JSON ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 370 Tm (A.  Accept-Language: fr) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (B.  Authorization: application/json) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (C.  Content-Type: application/json) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 327 Tm (16. Un champ React de Événements ne laisse pas taper. Il reçoit value depuis le state) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 315 Tm (sans onChange. Quel changement correspond à un champ contrôlé ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 303 Tm (A.  Remplacer le formulaire par une requête DELETE) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (B.  Ajouter onChange et appeler le setter avec la saisie) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (C.  Ajouter seulement un id CSS) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 260 Tm (17. La page Événements est chargée depuis /dossier/index.html. Elle référence) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (href="style.css". Quel fichier demande le navigateur ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 236 Tm (A.  /dossier/fiche-09.css) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (B.  /dossier/style.css) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (C.  /style.css) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 4301 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 109  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (3 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (18. Après une création via POST /api/evenements, quel en-tête peut indiquer l’URL de la) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (nouvelle ressource ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  If-Match) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  Location) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  Cookie) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (19. La base de Événements doit refuser les priorités hors des trois valeurs admises.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (Quelle contrainte exprime cette règle ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  CHECK avec la liste des valeurs) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  ORDER BY priorité) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  PRIMARY KEY sur le titre) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (20. Un compte veut quitter la session fiche-09. Effacer le cookie dans son navigateur) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (suffit-il pour invalider aussi la session côté serveur ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  Effacer le cookie ferme forcément toutes les copies de session) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  Il suffit de vider le texte de la page) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  Il faut invalider la session côté serveur) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (21. GET /api/evenements/fiche-09 renvoie 404. Quel diagnostic vérifier en premier pour) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (départager URL erronée et donnée absente ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  Ajouter au hasard un autre en-tête Content-Type) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  Comparer la méthode et l’URL réseau à la route, puis vérifier l’id) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  Modifier directement le CSS) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (22. Le panneau fiche-09 mesure 31 rem et son parent 36 rem. Si on applique margin-) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 425 Tm (inline: auto, quelle largeur chacun des deux espaces peut-il recevoir ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (A.  2,5 rem) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (B.  5 rem) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 389 Tm (C.  31 rem) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (23. Le service Événements déclenche une alerte au-delà de 520 ms sur un appel. Quel) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 358 Tm (réglage borne la durée qu’il attend ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (A.  Une clé React aléatoire) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (B.  Un timeout adapté) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 322 Tm (C.  Une marge CSS) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (24. Une liste contient [11, 18, 31]. Que produit [...liste, 32] dans Événements ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  [32, 11, 18, 31]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  [11, 18, 31]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  [11, 18, 31, 32]) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (25. Dans Événements, la page de détail doit être accessible via un lien et le bouton «) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (Ajouter » lance une action. Quelles balises choisir ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  Deux span avec une couleur différente) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  Un lien a pour le détail, un button pour l’ajout) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  Deux button sans type ni navigation) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 4153 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 109  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (4 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. A  submit sur le formulaire) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (Le formulaire déclenche submit aussi bien via la soumission au clavier que via le bouton) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 681 Tm (prévu.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 662 Tm (02. A  Secondes) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 650 Tm (max-age exprime une durée de fraîcheur en secondes. Le cache peut utiliser la réponse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 638 Tm (pendant cette durée selon ses règles.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 619 Tm (03. B  Utiliser un stockage partagé compatible avec les accès concurrents) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 607 Tm (Plusieurs instances doivent partager l’état qui fait référence. Choisis une base et une) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 595 Tm (configuration adaptées à la concurrence.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 576 Tm (04. A  id) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 564 Tm (Si id change, l’effet doit relancer le chargement correspondant au nouvel identifiant.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 545 Tm (05. C  Une contrainte UNIQUE sur le sujet en base) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 533 Tm (La base arbitre les écritures concurrentes. L’application doit ensuite gérer le refus d’une) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 521 Tm (attribution en doublon.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 502 Tm (06. B  La chaîne "11") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 490 Tm (trim retire les espaces au début et à la fin. La valeur reste une chaîne.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 471 Tm (07. A  .carte.actif) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 459 Tm (Sans espace, les deux classes doivent être présentes sur le même élément. Avec un espace,) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 447 Tm (on sélectionne un descendant.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 428 Tm (08. C  Une promesse du résultat du décodage) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 416 Tm (Utilise await ou then pour accéder à la valeur JSON décodée et gère les erreurs de lecture.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 397 Tm (09. A  /api/evenements) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 385 Tm (Un chemin relatif à l’origine adresse d’abord Vite. Son proxy prend ensuite en charge le) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 373 Tm (préfixe /api.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 354 Tm (10. A  Une réponse HTTP 400 peut résoudre la promesse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 342 Tm (Il faut examiner response.ok ou response.status et déclencher explicitement le traitement) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 330 Tm (d’erreur.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 311 Tm (11. C  Ignorer les 18 premières lignes avant de prélever les résultats) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 299 Tm (OFFSET décale le point de départ. LIMIT fixe le nombre maximal de lignes ensuite renvoyées.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 280 Tm (12. B  18) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 268 Tm (find s’arrête au premier élément qui satisfait le test, même si des éléments suivants) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 256 Tm (l’auraient aussi satisfait.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 237 Tm (13. C  Un nouveau tableau de 30 lignes) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 225 Tm (Après un DELETE réussi, filter peut créer un nouveau tableau qui exclut l’identifiant) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 213 Tm (supprimé. Une réponse 204 est vide.) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 4044 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 109  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (5 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (14. C  0) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (L’opérateur ?? utilise la valeur de secours seulement pour null ou undefined. Zéro reste) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 681 Tm (une valeur valide.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 662 Tm (15. C  Content-Type: application/json) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 650 Tm (Content-Type décrit le corps transmis. Accept décrit les formats souhaités pour la réponse.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 631 Tm (16. B  Ajouter onChange et appeler le setter avec la saisie) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 619 Tm (Le champ affiche la valeur du state. Le gestionnaire doit mettre à jour le state à chaque) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 607 Tm (saisie.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 588 Tm (17. B  /dossier/style.css) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 576 Tm (Le chemin relatif est résolu depuis le dossier du document, en l’absence de balise base.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 557 Tm (18. B  Location) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 545 Tm (Avec un statut 201, Location peut pointer vers l’URL à laquelle la nouvelle ressource peut) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 533 Tm (être consultée.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 514 Tm (19. A  CHECK avec la liste des valeurs) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 502 Tm (CHECK contraint les valeurs enregistrées. Une validation Express peut en plus produire une) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 490 Tm (erreur lisible.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 471 Tm (20. C  Il faut invalider la session côté serveur) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 459 Tm (L’invalidation serveur garantit que l’identifiant ne sera plus accepté, même si une copie) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 447 Tm (du cookie existe encore.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 428 Tm (21. B  Comparer la méthode et l’URL réseau à la route, puis vérifier l’id) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 416 Tm (Un 404 peut venir du routage ou d’une ressource absente. L’URL et la méthode permettent de) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 404 Tm (vérifier quel traitement a été atteint.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 385 Tm (22. A  2,5 rem) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 373 Tm (Le parent dispose ici de 5 rem d’espace libre, répartis en deux marges égales. Cela suppose) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 361 Tm (qu’aucune autre dimension ne consomme cet espace.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 342 Tm (23. B  Un timeout adapté) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 330 Tm (Le timeout transforme une attente trop longue en échec traitable. L’alerte et le timeout) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 318 Tm (peuvent être réglés selon des objectifs distincts.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 299 Tm (24. C  [11, 18, 31, 32]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 287 Tm (La syntaxe ... copie les éléments dans un nouveau tableau. La valeur placée après eux est) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 275 Tm (ajoutée à la fin.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 256 Tm (25. B  Un lien a pour le détail, un button pour l’ajout) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 244 Tm (Un lien porte une destination et un bouton déclenche une action. Ces éléments fonctionnent) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 232 Tm (nativement au clavier.) Tj ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000147 00000 n 
+0000000244 00000 n 
+0000000346 00000 n 
+0000000482 00000 n 
+0000005431 00000 n 
+0000005567 00000 n 
+0000009797 00000 n 
+0000009934 00000 n 
+0000014287 00000 n 
+0000014425 00000 n 
+0000018630 00000 n 
+0000018768 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+22864
+%%EOF

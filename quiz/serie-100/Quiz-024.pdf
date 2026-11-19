@@ -1,0 +1,275 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 4474 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 024  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (1 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. Le champ de recherche de recettes a id="recettes-024". Quel attribut du label rend) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (le texte cliquable ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  name="recettes-024") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  href="recettes-024") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  for="recettes-024") Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (02. Les sessions du site de recettes sont conservées en mémoire par une seule instance.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (Quelle solution permet à plusieurs instances de les retrouver ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  Un rechargement automatique) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  Un id CSS plus court) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  Un magasin de sessions partagé) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (03. SQLite exécute WHERE quantite >= 58. Parmi 57, 58 et 59, quelles valeurs passent le) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (filtre ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  59 uniquement) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  58 et 59) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  57 et 58) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (04. Un GET sur /api/v6/recettes/recettes-024?limit=6 arrive à une route finissant par) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (/:id. Que contient req.query.limit ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  La chaîne "recettes-024") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  La chaîne "6") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  Une chaîne vide) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (05. Un service a traité 12240 requêtes en 6 minutes. Quel débit moyen cela représente-) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 425 Tm (t-il par minute ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (A.  122400) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (B.  12240) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 389 Tm (C.  2040) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (06. Pour supprimer la ligne "recettes-024" de l’état React, quel test garder dans) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 358 Tm (filter ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (A.  element.id === "recettes-024") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (B.  element.id === undefined) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 322 Tm (C.  element.id !== "recettes-024") Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (07. Le formulaire React de recettes a value tiré de l’état. Que doit faire onChange ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  Écraser directement le JSX) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  Supprimer le champ) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  Mettre à jour cet état) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (08. Le 24e formulaire envoie un JSON lisible mais il manque le nom obligatoire. Quel) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (statut du contrat TODO correspond ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  400 Bad Request) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  201 Created) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  404 Not Found) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 181 Tm (09. Le service recettes-024 tourne sur 6 instances. On ajoute 6 instances de même) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 169 Tm (taille. Quelle stratégie et quel total ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 157 Tm (A.  Scale-up, 12 instances) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 145 Tm (B.  Scale-out, 12 instances) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 133 Tm (C.  Scale-out, 13 instances) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 4087 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 024  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (2 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (10. DELETE /api/v6/recettes/recettes-024 supprime la ligne. Le contrat répond 204.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (Quelle instruction faut-il éviter côté front ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  Appeler response.json\(\) sur cette réponse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  Vérifier response.ok) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  Enlever la ligne de la liste) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (11. Express monte un routeur avec app.use\("/api/v6", router\). Il déclare) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (router.get\("/recettes/:id"\). Quel GET cible l’élément recettes-024 ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  /api/v6/recettes/recettes-024) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  /api/v6/recettes-024) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  /recettes/recettes-024) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (12. La session du compte recettes-024 expire à 16 h. Quelle réponse API correspond en) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (général à une requête reçue à 17 h sans autre preuve ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  201 Created) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  401 Unauthorized) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  304 Not Modified) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (13. La requête DELETE WHERE id = ? reçoit "recettes-024" et renvoie changes = 0.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (Combien de lignes ont été supprimées ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  1) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  0) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (14. Une fiche a un prix initial de 54 €. Que vaut prix après let prix = 54; prix -= 6;) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 425 Tm (?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (A.  54 €) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (B.  60 €) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 389 Tm (C.  48 €) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (15. Un formulaire contient name="recherche" et id="recettes-024". Quelle clé sert pour) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 358 Tm (FormData ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (A.  recherche) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (B.  recettes-024) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 322 Tm (C.  formulaire) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (16. Quelle expression sélectionne le premier élément de classe "recettes-024" dans les) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 291 Tm (outils développeur ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (A.  document.querySelector\("#recettes-024"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (B.  document.querySelector\(".recettes-024"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 255 Tm (C.  document.querySelector\("recettes-024"\)) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (17. Le navigateur envisage un POST JSON interorigine vers /api/v6/recettes. Quelle) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 224 Tm (méthode peut être utilisée pour le prévol ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (A.  HEAD) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (B.  OPTIONS) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 188 Tm (C.  PUT) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 3758 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 024  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (3 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (18. Le bouton dans le formulaire recettes-024 doit ouvrir une aide sans soumettre. Quel) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (type choisir ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  Aucun type, car le formulaire change la valeur par défaut) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  submit) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  button) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (19. Le serveur répond en 58 ms au p95 sur un échantillon de 160 requêtes. Quelle) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (interprétation est correcte ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  Le débit vaut 58 requêtes par seconde) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  Environ 95 % terminent en 58 ms ou moins) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  Toutes terminent exactement en 58 ms) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (20. Combien d’éléments renvoie [24, 6, 79].filter\(x => x < 79\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 559 Tm (A.  3) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (B.  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (C.  1) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 516 Tm (21. La liste recettes est triée du plus récent au plus ancien. Quel champ utiliser) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (comme key si l’ordre change ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 492 Tm (A.  L’identifiant stable de chaque ligne) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (B.  La position dans le tableau) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (C.  Le nombre total de résultats) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 449 Tm (22. On exécute [24, 6, 79].map\(x => x + 6\). Quel tableau est renvoyé ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 437 Tm (A.  [30, 12, 85]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (B.  [144, 36, 474]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (C.  [24, 6, 79]) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 394 Tm (23. Dans le formulaire de recettes, quelle méthode empêche la soumission HTML classique) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 370 Tm (A.  event.preventDefault\(\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (B.  event.target.remove\(\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (C.  event.stopPropagation\(\)) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 327 Tm (24. Quel résultat donne [24, 6, 79].filter\(x => x >= 24\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 315 Tm (A.  [24, 79]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 303 Tm (B.  [79]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (C.  [24, 6, 79]) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 272 Tm (25. Une grille affiche 2 lignes complètes de 4 cartes et contient 24 cartes en tout.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 260 Tm (Combien de cartes restent à afficher si 8 cartes sont déjà à l’écran ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 248 Tm (A.  16) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 236 Tm (B.  24) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (C.  32) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 3526 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 024  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (4 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. C  for="recettes-024") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (Le for du label doit correspondre exactement à l’id recettes-024.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 674 Tm (02. C  Un magasin de sessions partagé) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 662 Tm (Un stockage partagé donne aux instances autorisées accès au même état de session.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 643 Tm (03. B  58 et 59) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 631 Tm (Le symbole >= signifie supérieur ou égal. La valeur seuil est incluse.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 612 Tm (04. B  La chaîne "6") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 600 Tm (Dans la configuration habituelle d’Express, cette valeur simple de la query string est lue) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 588 Tm (comme texte. L’id du chemin est dans req.params.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 569 Tm (05. C  2040) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 557 Tm (Divise le nombre total de requêtes par le nombre de minutes de la mesure.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 538 Tm (06. C  element.id !== "recettes-024") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 526 Tm (Le prédicat sélectionne les lignes conservées. On garde donc les éléments dont l’id diffère) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 514 Tm (de celui à retirer.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 495 Tm (07. C  Mettre à jour cet état) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 483 Tm (L’état contrôle la valeur affichée. onChange permet de refléter la nouvelle saisie.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 464 Tm (08. A  400 Bad Request) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 452 Tm (La requête atteint la route, mais les données ne satisfont pas la validation.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 433 Tm (09. B  Scale-out, 12 instances) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 421 Tm (Ajouter des instances est une mise à l’échelle horizontale. On additionne le nombre ancien) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 409 Tm (et le nombre ajouté.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 390 Tm (10. A  Appeler response.json\(\) sur cette réponse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 378 Tm (Le statut 204 annonce une réponse sans corps. Il n’y a donc aucun JSON à décoder.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 359 Tm (11. A  /api/v6/recettes/recettes-024) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 347 Tm (Le chemin final combine le préfixe du montage, le chemin de la route et la valeur de) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 335 Tm (l’identifiant.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 316 Tm (12. B  401 Unauthorized) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 304 Tm (Après expiration, la requête ne possède plus de preuve valable.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 285 Tm (13. C  0) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 273 Tm (changes indique le nombre de lignes modifiées par la commande exécutée.) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 3310 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 024  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (5 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (14. C  48 €) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (L’opérateur -= soustrait la valeur de droite, puis affecte le résultat à la variable.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 674 Tm (15. A  recherche) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 662 Tm (FormData utilise le nom du champ. L’id sert notamment aux sélecteurs et aux associations de) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 650 Tm (libellé.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 631 Tm (16. B  document.querySelector\(".recettes-024"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 619 Tm (Le point sélectionne une classe, # sélectionne un identifiant et le nom seul correspond à) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 607 Tm (une balise.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 588 Tm (17. B  OPTIONS) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 576 Tm (Le navigateur interroge le serveur via OPTIONS avant certaines requêtes interorigines.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 557 Tm (18. C  button) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 545 Tm (Le type button évite la soumission. Dans un formulaire, le type implicite est en général) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 533 Tm (submit.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 514 Tm (19. B  Environ 95 % terminent en 58 ms ou moins) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 502 Tm (Le p95 décrit un seuil de durée. Il ne donne ni une durée identique pour tous ni un débit.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 483 Tm (20. B  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 471 Tm (Les éléments 24 et 6 satisfont le test strict. 79 est égal au seuil, donc il est exclu.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 452 Tm (21. A  L’identifiant stable de chaque ligne) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 440 Tm (L’identifiant reste associé à la même donnée après un tri, contrairement à la position.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 421 Tm (22. A  [30, 12, 85]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 409 Tm (map applique la même transformation à chaque élément. Ici, la transformation ajoute 6.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 390 Tm (23. A  event.preventDefault\(\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 378 Tm (preventDefault empêche le comportement par défaut de l’événement.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 359 Tm (24. A  [24, 79]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 347 Tm (filter garde les éléments qui satisfont le test. 24 est compris car le test est inclusif.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 328 Tm (25. A  16) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 316 Tm (Multiplie le nombre de lignes par le nombre de colonnes. Si la question demande un reste,) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 304 Tm (soustrais ce produit du total.) Tj ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000147 00000 n 
+0000000244 00000 n 
+0000000346 00000 n 
+0000000482 00000 n 
+0000005007 00000 n 
+0000005143 00000 n 
+0000009281 00000 n 
+0000009418 00000 n 
+0000013228 00000 n 
+0000013366 00000 n 
+0000016944 00000 n 
+0000017082 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+20444
+%%EOF

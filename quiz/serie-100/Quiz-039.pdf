@@ -1,0 +1,273 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 4206 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 039  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (1 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. On exécute [44, 5, 63].map\(x => x + 6\). Quel tableau est renvoyé ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 693 Tm (A.  [44, 5, 63]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (B.  [50, 11, 69]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (C.  [264, 30, 378]) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 650 Tm (02. Un formulaire contient name="recherche" et id="evenements-039". Quelle clé sert) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (pour FormData ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 626 Tm (A.  formulaire) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (B.  evenements-039) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (C.  recherche) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 583 Tm (03. La requête DELETE WHERE id = ? reçoit "evenements-039" et renvoie changes = 1.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (Combien de lignes ont été supprimées ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 559 Tm (A.  1) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (B.  0) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (C.  2) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 516 Tm (04. La session du compte evenements-039 expire à 15 h. Quelle réponse API correspond en) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (général à une requête reçue à 16 h sans autre preuve ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 492 Tm (A.  304 Not Modified) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (B.  201 Created) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (C.  401 Unauthorized) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 449 Tm (05. Le serveur répond en 88 ms au p95 sur un échantillon de 220 requêtes. Quelle) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (interprétation est correcte ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (A.  Environ 95 % terminent en 88 ms ou moins) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (B.  Toutes terminent exactement en 88 ms) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (C.  Le débit vaut 88 requêtes par seconde) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (06. Deux insertions visent la même valeur evenements-039. Quelle contrainte conserve) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (l’unicité en base ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (A.  Un simple ORDER BY) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (B.  NOT NULL seule) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (C.  UNIQUE) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 315 Tm (07. Une liste React de 44 éléments reçoit 5 nouveaux éléments. On appelle setItems\(old) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (=> [...old, ...nouveaux]\). Quelle longueur attend-on ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  49) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  220) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  44) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (08. Le client possède un ETag "v39" pour /api/v5/evenements. Quel statut signale que) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (son GET conditionnel peut réutiliser le cache ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  304) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  201) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  409) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 181 Tm (09. Que renvoie [44, 5, 63].find\(x => x > 63\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 169 Tm (A.  []) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 157 Tm (B.  undefined) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 145 Tm (C.  null) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 4069 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 039  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (2 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (10. DELETE /api/v5/evenements/evenements-039 supprime la ligne. Le contrat répond 204.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (Quelle instruction faut-il éviter côté front ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  Vérifier response.ok) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  Appeler response.json\(\) sur cette réponse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  Enlever la ligne de la liste) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (11. Pour supprimer la ligne "evenements-039" de l’état React, quel test garder dans) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (filter ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  element.id === undefined) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  element.id === "evenements-039") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  element.id !== "evenements-039") Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (12. Le 39e formulaire envoie un JSON lisible mais il manque le nom obligatoire. Quel) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (statut du contrat TODO correspond ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  201 Created) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  404 Not Found) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  400 Bad Request) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (13. localStorage contient la chaîne "44" pour la clé "evenements-039". Quel résultat) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (donne Number\(localStorage.getItem\("evenements-039"\)\) + 5 ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  39) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  La chaîne "445") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  49) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (14. Quel résultat donne [44, 5, 63].filter\(x => x >= 44\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (A.  [63]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (B.  [44, 63]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (C.  [44, 5, 63]) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (15. Le compte evenements-039 est authentifié, mais seuls les administrateurs peuvent) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (accéder à cette ressource. Quel statut correspond à un refus ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (A.  403 Forbidden) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (B.  204 No Content) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (C.  401 Unauthorized) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 315 Tm (16. Un GET sur /api/v5/evenements/evenements-039?limit=5 arrive à une route finissant) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (par /:id. Que contient req.query.limit ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  Une chaîne vide) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  La chaîne "evenements-039") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  La chaîne "5") Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (17. Le front est sur http://localhost:4039. L’API est sur http://localhost:4040. Qu’en) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (déduire ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  Elles sont identiques car localhost est commun) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  Les origines diffèrent par le port) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  Le protocole a changé) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 3927 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 039  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (3 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (18. SQLite exécute WHERE quantite >= 88. Parmi 87, 88 et 89, quelles valeurs passent le) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (filtre ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  87 et 88) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  88 et 89) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  89 uniquement) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (19. Le site de événements sert une image informative. Quel attribut décrit le contenu) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (de l’image ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  alt) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  target) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  href) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (20. Quelle expression sélectionne le premier élément de classe "evenements-039" dans) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (les outils développeur ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  document.querySelector\(".evenements-039"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  document.querySelector\("#evenements-039"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  document.querySelector\("evenements-039"\)) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (21. Combien d’éléments renvoie [44, 5, 63].filter\(x => x < 63\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 492 Tm (A.  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (B.  3) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (C.  1) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 449 Tm (22. Le back publie la progression des traitements de événements vers les navigateurs.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (Quel choix unidirectionnel convient ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (A.  SSE) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (B.  Une requête SQL INSERT seule) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (C.  Un jeton JWT) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (23. Le service evenements-039 tourne sur 5 instances. On ajoute 6 instances de même) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (taille. Quelle stratégie et quel total ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (A.  Scale-out, 12 instances) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (B.  Scale-out, 11 instances) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (C.  Scale-up, 11 instances) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 315 Tm (24. Le champ de recherche de événements a id="evenements-039". Quel attribut du label) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (rend le texte cliquable ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  href="evenements-039") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  for="evenements-039") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  name="evenements-039") Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (25. Une carte de événements déclare width: 277px, un padding de 10px et une bordure de) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (2px de chaque côté. Quelle est sa largeur avec content-box ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  277px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  289px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  301px) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 3234 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 039  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (4 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. B  [50, 11, 69]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (map applique la même transformation à chaque élément. Ici, la transformation ajoute 6.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 674 Tm (02. C  recherche) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 662 Tm (FormData utilise le nom du champ. L’id sert notamment aux sélecteurs et aux associations de) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 650 Tm (libellé.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 631 Tm (03. A  1) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 619 Tm (changes indique le nombre de lignes modifiées par la commande exécutée.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 600 Tm (04. C  401 Unauthorized) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 588 Tm (Après expiration, la requête ne possède plus de preuve valable.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 569 Tm (05. A  Environ 95 % terminent en 88 ms ou moins) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 557 Tm (Le p95 décrit un seuil de durée. Il ne donne ni une durée identique pour tous ni un débit.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 538 Tm (06. C  UNIQUE) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 526 Tm (Une contrainte UNIQUE rejette la deuxième valeur identique.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 507 Tm (07. A  49) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 495 Tm (L’opérateur ... développe les anciens éléments et les nouveaux dans un nouveau tableau.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 476 Tm (08. A  304) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 464 Tm (304 indique que la représentation validée est encore actuelle.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 445 Tm (09. B  undefined) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 433 Tm (find renvoie undefined si aucun élément ne satisfait le test.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 414 Tm (10. B  Appeler response.json\(\) sur cette réponse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 402 Tm (Le statut 204 annonce une réponse sans corps. Il n’y a donc aucun JSON à décoder.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 383 Tm (11. C  element.id !== "evenements-039") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 371 Tm (Le prédicat sélectionne les lignes conservées. On garde donc les éléments dont l’id diffère) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 359 Tm (de celui à retirer.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 340 Tm (12. C  400 Bad Request) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 328 Tm (La requête atteint la route, mais les données ne satisfont pas la validation.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 309 Tm (13. C  49) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 297 Tm (Number convertit le texte en nombre avant l’addition avec 5.) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 3273 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 039  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (5 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (14. B  [44, 63]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (filter garde les éléments qui satisfont le test. 44 est compris car le test est inclusif.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 674 Tm (15. A  403 Forbidden) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 662 Tm (L’identité est connue. C’est l’autorisation demandée qui manque.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 643 Tm (16. C  La chaîne "5") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 631 Tm (Dans la configuration habituelle d’Express, cette valeur simple de la query string est lue) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 619 Tm (comme texte. L’id du chemin est dans req.params.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 600 Tm (17. B  Les origines diffèrent par le port) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 588 Tm (L’origine tient compte du protocole, de l’hôte et du port. Une requête directe peut donc) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 576 Tm (être soumise à CORS.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 557 Tm (18. B  88 et 89) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 545 Tm (Le symbole >= signifie supérieur ou égal. La valeur seuil est incluse.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 526 Tm (19. A  alt) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 514 Tm (Le texte alternatif rend l’information disponible aux personnes qui ne voient pas l’image.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 495 Tm (20. A  document.querySelector\(".evenements-039"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 483 Tm (Le point sélectionne une classe, # sélectionne un identifiant et le nom seul correspond à) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 471 Tm (une balise.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 452 Tm (21. A  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 440 Tm (Les éléments 44 et 5 satisfont le test strict. 63 est égal au seuil, donc il est exclu.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 421 Tm (22. A  SSE) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 409 Tm (SSE transmet un flux d’événements du serveur vers le client.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 390 Tm (23. B  Scale-out, 11 instances) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 378 Tm (Ajouter des instances est une mise à l’échelle horizontale. On additionne le nombre ancien) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 366 Tm (et le nombre ajouté.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 347 Tm (24. B  for="evenements-039") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 335 Tm (Le for du label doit correspondre exactement à l’id evenements-039.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 316 Tm (25. C  301px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 304 Tm (Avec content-box, il faut ajouter le padding et la bordure de chacun des deux côtés.) Tj ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000147 00000 n 
+0000000244 00000 n 
+0000000346 00000 n 
+0000000482 00000 n 
+0000004739 00000 n 
+0000004875 00000 n 
+0000008995 00000 n 
+0000009132 00000 n 
+0000013111 00000 n 
+0000013249 00000 n 
+0000016535 00000 n 
+0000016673 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+19998
+%%EOF

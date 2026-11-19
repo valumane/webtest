@@ -1,0 +1,274 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 4555 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 058  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (1 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. Un formulaire contient name="recherche" et id="trajets-058". Quelle clé sert pour) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (FormData ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  trajets-058) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  recherche) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  formulaire) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (02. Une carte de trajets a width: 334px, padding de 9px, bordure de 2px, et box-sizing:) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (border-box. Quelle largeur extérieure ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  356px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  352px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  334px) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (03. Une dépendance du service trajets-058 répond en échec plusieurs fois de suite. Que) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (fait un circuit breaker ouvert ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  Il rejoue chaque POST sans limite) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  Il bloque temporairement les nouveaux appels à cette dépendance) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  Il supprime le contrat HTTP) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (04. Une liste React de 14 éléments reçoit 4 nouveaux éléments. On appelle setItems\(old) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (=> [...old, ...nouveaux]\). Quelle longueur attend-on ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  18) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  56) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  14) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (05. Express monte un routeur avec app.use\("/api/v4", router\). Il déclare) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 425 Tm (router.get\("/trajets/:id"\). Quel GET cible l’élément trajets-058 ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (A.  /api/v4/trajets-058) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (B.  /api/v4/trajets/trajets-058) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 389 Tm (C.  /trajets/trajets-058) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (06. Le serveur répond en 126 ms au p95 sur un échantillon de 296 requêtes. Quelle) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 358 Tm (interprétation est correcte ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (A.  Toutes terminent exactement en 126 ms) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (B.  Environ 95 % terminent en 126 ms ou moins) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 322 Tm (C.  Le débit vaut 126 requêtes par seconde) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (07. On exécute [14, 4, 84].map\(x => x + 5\). Quel tableau est renvoyé ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  [70, 20, 420]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  [19, 9, 89]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  [14, 4, 84]) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (08. Quelle expression sélectionne le premier élément de classe "trajets-058" dans les) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (outils développeur ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  document.querySelector\("#trajets-058"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  document.querySelector\("trajets-058"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  document.querySelector\(".trajets-058"\)) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 181 Tm (09. Quelle propriété d’Express porte les champs JSON du POST sur /api/v4/trajets, après) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 169 Tm (express.json\(\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 157 Tm (A.  req.body) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 145 Tm (B.  res.headers) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 133 Tm (C.  req.params) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3833 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 058  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (2 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (10. La requête DELETE WHERE id = ? reçoit "trajets-058" et renvoie changes = 0. Combien) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (de lignes ont été supprimées ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  0) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  1) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  2) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (11. Une carte de trajets déclare width: 334px, un padding de 9px et une bordure de 2px) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (de chaque côté. Quelle est sa largeur avec content-box ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  345px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  334px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  356px) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (12. localStorage contient la chaîne "14" pour la clé "trajets-058". Quel résultat donne) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (Number\(localStorage.getItem\("trajets-058"\)\) + 4 ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  10) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  La chaîne "144") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  18) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (13. La session du compte trajets-058 expire à 14 h. Quelle réponse API correspond en) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (général à une requête reçue à 15 h sans autre preuve ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  401 Unauthorized) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  304 Not Modified) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  201 Created) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (14. Quel appel transforme le tableau [14, 4, 84] en texte JSON pour localStorage ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (A.  JSON.stringify) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (B.  JSON.parse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (C.  Number) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (15. Pour SELECT id FROM trajets WHERE id = ?, à quoi sert le symbole ? ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 370 Tm (A.  À remplacer la clause WHERE) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (B.  À générer le nom de la table) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (C.  À lier une valeur au moment de l’exécution) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 327 Tm (16. Un GET sur /api/v4/trajets/trajets-058?limit=4 arrive à une route finissant par) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 315 Tm (/:id. Que contient req.query.limit ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 303 Tm (A.  La chaîne "4") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (B.  Une chaîne vide) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (C.  La chaîne "trajets-058") Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 260 Tm (17. Une grille de 4 lignes et 4 colonnes affiche une carte par case. Combien de cartes) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (contient-elle une fois remplie ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 236 Tm (A.  17) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (B.  15) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (C.  16) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 3953 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 058  /  QUESTIONS) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (25 questions pour réviser) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (15 minutes · Une seule bonne réponse par question) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (3 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (18. Le front est sur http://localhost:4058. L’API est sur http://localhost:4059. Qu’en) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 693 Tm (déduire ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 681 Tm (A.  Elles sont identiques car localhost est commun) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 669 Tm (B.  Les origines diffèrent par le port) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 657 Tm (C.  Le protocole a changé) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 638 Tm (19. Le compte trajets-058 est authentifié, mais seuls les administrateurs peuvent) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 626 Tm (accéder à cette ressource. Quel statut correspond à un refus ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 614 Tm (A.  403 Forbidden) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 602 Tm (B.  401 Unauthorized) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 590 Tm (C.  204 No Content) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 571 Tm (20. La liste trajets est triée du plus récent au plus ancien. Quel champ utiliser comme) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 559 Tm (key si l’ordre change ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 547 Tm (A.  La position dans le tableau) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 535 Tm (B.  L’identifiant stable de chaque ligne) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 523 Tm (C.  Le nombre total de résultats) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 504 Tm (21. DELETE /api/v4/trajets/trajets-058 supprime la ligne. Le contrat répond 204. Quelle) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 492 Tm (instruction faut-il éviter côté front ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 480 Tm (A.  Enlever la ligne de la liste) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 468 Tm (B.  Vérifier response.ok) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 456 Tm (C.  Appeler response.json\(\) sur cette réponse) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 437 Tm (22. Combien d’éléments renvoie [14, 4, 84].filter\(x => x < 84\) ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 425 Tm (A.  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 413 Tm (B.  1) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 401 Tm (C.  3) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 382 Tm (23. Pour supprimer la ligne "trajets-058" de l’état React, quel test garder dans filter) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 370 Tm (?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 358 Tm (A.  element.id === "trajets-058") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 346 Tm (B.  element.id !== "trajets-058") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 334 Tm (C.  element.id === undefined) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 315 Tm (24. Une fiche a un prix initial de 32 €. Que vaut prix après let prix = 32; prix -= 4;) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 303 Tm (?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 291 Tm (A.  28 €) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 279 Tm (B.  36 €) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 267 Tm (C.  32 €) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 248 Tm (25. Un service a traité 10880 requêtes en 4 minutes. Quel débit moyen cela représente-) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 236 Tm (t-il par minute ?) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 224 Tm (A.  163200) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 212 Tm (B.  10880) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 64 200 Tm (C.  2720) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 3387 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 058  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (4 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (01. B  recherche) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (FormData utilise le nom du champ. L’id sert notamment aux sélecteurs et aux associations de) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 681 Tm (libellé.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 662 Tm (02. C  334px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 650 Tm (Avec border-box, la largeur inclut déjà le contenu, le padding et la bordure.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 631 Tm (03. B  Il bloque temporairement les nouveaux appels à cette dépendance) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 619 Tm (Le service laisse la dépendance récupérer et évite d’accumuler des appels voués à échouer.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 600 Tm (04. A  18) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 588 Tm (L’opérateur ... développe les anciens éléments et les nouveaux dans un nouveau tableau.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 569 Tm (05. B  /api/v4/trajets/trajets-058) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 557 Tm (Le chemin final combine le préfixe du montage, le chemin de la route et la valeur de) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 545 Tm (l’identifiant.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 526 Tm (06. B  Environ 95 % terminent en 126 ms ou moins) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 514 Tm (Le p95 décrit un seuil de durée. Il ne donne ni une durée identique pour tous ni un débit.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 495 Tm (07. B  [19, 9, 89]) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 483 Tm (map applique la même transformation à chaque élément. Ici, la transformation ajoute 5.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 464 Tm (08. C  document.querySelector\(".trajets-058"\)) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 452 Tm (Le point sélectionne une classe, # sélectionne un identifiant et le nom seul correspond à) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 440 Tm (une balise.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 421 Tm (09. A  req.body) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 409 Tm (Le middleware décode le corps et l’expose sur req.body.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 390 Tm (10. A  0) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 378 Tm (changes indique le nombre de lignes modifiées par la commande exécutée.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 359 Tm (11. C  356px) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 347 Tm (Avec content-box, il faut ajouter le padding et la bordure de chacun des deux côtés.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 328 Tm (12. C  18) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 316 Tm (Number convertit le texte en nombre avant l’addition avec 4.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 297 Tm (13. A  401 Unauthorized) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 285 Tm (Après expiration, la requête ne possède plus de preuve valable.) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 3370 >>
+stream
+BT /F2 10 Tf 0.08 0.35 0.38 rg 1 0 0 1 48 795 Tm (WEB  /  QUIZ 058  /  CORRIGÉ) Tj ET
+BT /F2 25 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 762 Tm (Réponses expliquées) Tj ET
+BT /F1 11 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 736 Tm (1 point par bonne réponse · Total sur 25) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 518 40 Tm (5 / 5) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 705 Tm (14. A  JSON.stringify) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 693 Tm (JSON.stringify sérialise. JSON.parse réalise l’opération de lecture inverse.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 674 Tm (15. C  À lier une valeur au moment de l’exécution) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 662 Tm (La requête conserve sa structure et le pilote transmet la valeur séparément.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 643 Tm (16. A  La chaîne "4") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 631 Tm (Dans la configuration habituelle d’Express, cette valeur simple de la query string est lue) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 619 Tm (comme texte. L’id du chemin est dans req.params.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 600 Tm (17. C  16) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 588 Tm (Multiplie le nombre de lignes par le nombre de colonnes. Si la question demande un reste,) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 576 Tm (soustrais ce produit du total.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 557 Tm (18. B  Les origines diffèrent par le port) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 545 Tm (L’origine tient compte du protocole, de l’hôte et du port. Une requête directe peut donc) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 533 Tm (être soumise à CORS.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 514 Tm (19. A  403 Forbidden) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 502 Tm (L’identité est connue. C’est l’autorisation demandée qui manque.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 483 Tm (20. B  L’identifiant stable de chaque ligne) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 471 Tm (L’identifiant reste associé à la même donnée après un tri, contrairement à la position.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 452 Tm (21. C  Appeler response.json\(\) sur cette réponse) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 440 Tm (Le statut 204 annonce une réponse sans corps. Il n’y a donc aucun JSON à décoder.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 421 Tm (22. A  2) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 409 Tm (Les éléments 14 et 4 satisfont le test strict. 84 est égal au seuil, donc il est exclu.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 390 Tm (23. B  element.id !== "trajets-058") Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 378 Tm (Le prédicat sélectionne les lignes conservées. On garde donc les éléments dont l’id diffère) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 366 Tm (de celui à retirer.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 347 Tm (24. A  28 €) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 335 Tm (L’opérateur -= soustrait la valeur de droite, puis affecte le résultat à la variable.) Tj ET
+BT /F2 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 48 316 Tm (25. C  2720) Tj ET
+BT /F1 10 Tf 0.09 0.16 0.23 rg 1 0 0 1 57 304 Tm (Divise le nombre total de requêtes par le nombre de minutes de la mesure.) Tj ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000147 00000 n 
+0000000244 00000 n 
+0000000346 00000 n 
+0000000482 00000 n 
+0000005088 00000 n 
+0000005224 00000 n 
+0000009108 00000 n 
+0000009245 00000 n 
+0000013250 00000 n 
+0000013388 00000 n 
+0000016827 00000 n 
+0000016965 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+20387
+%%EOF

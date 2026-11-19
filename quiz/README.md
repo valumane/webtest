@@ -9,3 +9,9 @@ Chaque PDF contient 25 QCM, avec une seule bonne réponse par question. Vise 15 
 | [3](Quiz-03-react-vite.pdf) | React, Vite et intégration à l’API |
 | [4](Quiz-04-authentification-spring.pdf) | Authentification, sessions, JWT et Spring Boot |
 | [5](Quiz-05-architecture-deploiement.pdf) | Architecture, performance et déploiement |
+
+## Série supplémentaire
+
+[100 quiz mixtes de 25 questions](serie-100/README.md) · [Télécharger les 100 PDF en ZIP](100-quiz-web.zip).
+
+[300 questions supplémentaires · Quiz 101 à 112](serie-300-questions/README.md) · [Télécharger les PDF en ZIP](300-questions-web.zip).
