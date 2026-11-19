@@ -74,3 +74,28 @@ export default function App() {
         </div>
     );
 }
+
+
+
+
+
+async function supprimerLivre(id) {
+    try {
+        const reponse = await fetch(`/api/livres/${encodeURIComponent(id)}`, {
+            method: "DELETE"
+        });
+
+        if (!reponse.ok) {
+            setMessage(reponse.status === 404
+                ? "Livre introuvable."
+                : `Erreur HTTP ${reponse.status}`);
+            return;
+        }
+
+        // Une réponse 204 est vide. On recharge directement la liste.
+        setMessage("Livre supprimé.");
+        await showLivre();
+    } catch {
+        setMessage("Impossible de supprimer le livre.");
+    }
+}
