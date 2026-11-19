@@ -1,0 +1,9 @@
+:root { font-family: system-ui, sans-serif; color: #192c3b; background: #f2f6f8; }
+body { margin: 0; }
+main { max-width: 38rem; margin: 3rem auto; padding: 0 1rem; }
+form { display: grid; gap: .5rem; }
+input, select, button { font: inherit; padding: .5rem; }
+button { cursor: pointer; }
+ul { padding: 0; }
+li { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+     background: white; padding: .75rem; margin: .5rem 0; overflow-wrap: anywhere; }
