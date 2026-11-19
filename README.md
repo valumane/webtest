@@ -16,3 +16,5 @@ Tu débutes ? Suis le [manuel pour créer ton premier site](Manuel-Site-Web-Debu
 | [Archives](archives/) | Copies de TP et exports texte d’origine |
 
 Les noms de dossiers cités dans le PDF correspondent à ceux d’avant le rangement. Ce tableau permet de retrouver leurs nouveaux emplacements. Les deux modèles ont chacun leur base locale et ne dépendent d’aucun dossier de TP.
+
+[TP test · vérifier React, Express, SQLite et le QCM](TP-Test-Web.md).
